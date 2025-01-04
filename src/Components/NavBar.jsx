@@ -57,6 +57,9 @@ function NavBar() {
             <a className="navbar-brand active logo text-dark" to="#">
               دليل المدينة
             </a>
+            <div className="user-image">
+                
+            </div>
           </div>
         </nav>
       </>
