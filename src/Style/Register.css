@@ -64,11 +64,11 @@ section .container .row .Register-button {
             font-weight: 700;
             color: rgba(255, 255, 255, 1);
 }
-.form-check label {
+.form-check-label label {
         font-size: 16px;
         font-weight: 400;
         color: rgba(0, 0, 0, 1);
 }
-.form-check span {
+.form-check-label span {
     color: rgba(237, 184, 44, 1);
 }
