@@ -1,3 +1,4 @@
+import "../Style/NavBarStyle.css"
 function NavBar() {
     return (
       <>
@@ -20,41 +21,41 @@ function NavBar() {
             >
               <ul className="navbar-nav me-auto mb-2 d-flex gap-4 mb-lg-0">
                 <li className="nav-item ">
-                  <a className="active text-dark" to="/SearchPage">
-                    
+                  <a className="active text-dark" href="/SearchPage">
+                    <i class="fa fa-search"></i>
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="active text-dark" to="/favorites">
-                    
+                  <a className="active text-dark" href="/favorites">
+                    <i class="fa fa-heart"></i>
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="active text-dark" to="/NotificationsPage">
-                    
+                  <a className="active text-dark" href="/NotificationsPage">
+                    <i class="fa fa-bell"></i>
                   </a>
                 </li>
               </ul>
               <ul className="navbar-nav me-auto mb-2 d-flex gap-4 mb-lg-0">
                 <li className="nav-item">
-                  <a className="nav-a active text-dark" to="/contact">
+                  <a className="nav-a active text-dark" herf="/contact">
                     اتصل بنا
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-a active text-dark" to="/Explore">
+                  <a className="nav-a active text-dark" href="/Explore">
                     استكشف
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-a active text-dark" to="/home">
+                  <a className="nav-a active text-dark" href="/home">
                     الرئيسية
                   </a>
                 </li>
               </ul>
             </div>
             <a className="navbar-brand active logo text-dark" to="#">
-              دليل المدينة 
+              دليل المدينة
             </a>
           </div>
         </nav>
