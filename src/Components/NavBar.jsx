@@ -3,7 +3,7 @@ import LogoImage from "../Assets/Logo.png"
 function NavBar() {
     return (
       <>
-        <nav className="navbar navbar-expand-xl  bg-white">
+        <nav className="navbar navbar-expand-xl bg-white shadow">
           <div className="container">
             <button
               className="navbar-toggler text-white"
@@ -58,9 +58,7 @@ function NavBar() {
             <a className="navbar-brand active logo text-dark" to="#">
               دليل المدينة <img src={LogoImage} alt="" />
             </a>
-            <div className="user-image">
-                
-            </div>
+            <div className="user-image"></div>
           </div>
         </nav>
       </>
