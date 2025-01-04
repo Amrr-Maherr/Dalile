@@ -1,0 +1,52 @@
+.Home-section {
+    background-image: url('../Assets/Hero-Image.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100dvh;
+    font-family: "cairo";
+}
+.Home-section .container {
+    display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+}
+.Home-section .container .Hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.Home-section .container .Hero-content .Hero-title h1 {
+        font-size: 64px;
+        font-weight: 700;
+        color: white;
+}
+.Home-section .container .Hero-content .Hero-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+}
+.Home-section .container .Hero-content .Hero-buttons button {
+        border: none;
+        width: 131px;
+        height: 48px;
+        border-radius: 8px;
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        -ms-border-radius: 8px;
+        -o-border-radius: 8px;
+        color: rgba(255, 255, 255, 1);
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+}
+.Home-section .container .Hero-content .Hero-buttons .register-btn {
+    background-color: rgba(33, 33, 33, 0.8);
+}
+.Home-section .container .Hero-content .Hero-buttons .login-btn , .Home-section .container .Hero-content .Hero-buttons .logout-btn {
+    background-color: rgba(237, 184, 44, 1);
+}
+
