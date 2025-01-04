@@ -1,4 +1,5 @@
 import "../Style/NavBarStyle.css"
+import LogoImage from "../Assets/Logo.png"
 function NavBar() {
     return (
       <>
@@ -55,7 +56,7 @@ function NavBar() {
               </ul>
             </div>
             <a className="navbar-brand active logo text-dark" to="#">
-              دليل المدينة
+              دليل المدينة <img src={LogoImage} alt="" />
             </a>
             <div className="user-image">
                 
