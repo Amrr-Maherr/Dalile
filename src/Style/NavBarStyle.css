@@ -1,10 +1,31 @@
-.navbar .container ul li a {
+.navbar .container ul .nav-item a {
     text-decoration: none;
     font-size: 20px;
     font-weight: 600;
 }
-.navbar .container ul li a i {
+.navbar .container ul .nav-item a {
     color: #112211;
+    position: relative;
+}
+.navbar .container ul .nav-item a {
+    position: relative;
+    /* إضافة هذه السطر */
+}
+
+.navbar .container ul .nav-item a::before {
+    content: "";
+    bottom: -10px;
+    left: 0;
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #FF7757;
+    transition: width 0.5s;
+}
+
+.navbar .container ul .nav-item a:hover::before {
+    width: 100%;
+    background-color: red;
 }
 .navbar .container .logo img {
     width: 16.01px;
