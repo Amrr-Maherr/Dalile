@@ -14,7 +14,7 @@
 
 .navbar .container ul .nav-item a::before {
     content: "";
-    bottom: -10px;
+    bottom: -11px;
     left: 0;
     position: absolute;
     width: 0;
