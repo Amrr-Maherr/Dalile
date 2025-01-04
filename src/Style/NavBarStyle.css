@@ -12,7 +12,7 @@
     /* إضافة هذه السطر */
 }
 
-.navbar .container ul .nav-item a::before {
+.navbar .container ul .nav-item .link::before {
     content: "";
     bottom: -11px;
     left: 0;
@@ -23,7 +23,7 @@
     transition: width 0.5s;
 }
 
-.navbar .container ul .nav-item a:hover::before {
+.navbar .container ul .nav-item .link:hover::before {
     width: 100%;
     background-color: red;
 }

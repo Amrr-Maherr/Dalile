@@ -19,36 +19,30 @@ function NavBar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 d-flex gap-4 mb-lg-0">
             <li className="nav-item">
-              <Link className="active text-dark" >
+              <Link className="active text-dark">
                 <i className="fa fa-search"></i>
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="active text-dark" >
+              <Link className="active text-dark">
                 <i className="fa fa-heart"></i>
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="active text-dark" >
+              <Link className="active text-dark">
                 <i className="fa fa-bell"></i>
               </Link>
             </li>
           </ul>
           <ul className="navbar-nav me-auto mb-2 d-flex gap-4 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-a active text-dark" >
-                اتصل بنا
-              </Link>
+              <Link className="nav-a active text-dark link">اتصل بنا</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-a active text-dark" >
-                استكشف
-              </Link>
+              <Link className="nav-a active text-dark link">استكشف</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-a active text-dark" >
-                الرئيسية
-              </Link>
+              <Link className="nav-a active text-dark link">الرئيسية</Link>
             </li>
           </ul>
         </div>
