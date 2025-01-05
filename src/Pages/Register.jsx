@@ -42,7 +42,7 @@ function Register() {
         setPhoneNumber("");
         setPassword("");
         setTimeout(() => {
-          Navigate("/");
+          Navigate("/login");
         },2000)
       })
       .catch((error) => {
