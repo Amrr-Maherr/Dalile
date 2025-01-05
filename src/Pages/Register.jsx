@@ -35,7 +35,7 @@ function Register() {
           text: successMessage,
           icon: "success",
         });
-        localStorage.setItem("UseInfo", JSON.stringify(userInfo))
+        localStorage.setItem("UserInfo", JSON.stringify(userInfo))
         setFirstName("");
         setSecondName("");
         setEmail("");

@@ -7,6 +7,7 @@ import Home from './Pages/Home';
 import Register from './Pages/Register';
 import Login from './Pages/Login';
 import ForgetPassword from "./Pages/ForgetPassword";
+import VerificationCode from './Pages/VerificationCode';
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/forget-password" element={<ForgetPassword/>} />
+          <Route path="/forget-password" element={<ForgetPassword />} />
+          <Route path="/verification-code" element={<VerificationCode />} />
         </Routes>
       </div>
     </BrowserRouter>
