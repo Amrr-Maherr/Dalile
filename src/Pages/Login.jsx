@@ -71,7 +71,9 @@ function Login() {
                         className="form-control email"
                         id="emailInput" // تم تغيير الـ id هنا
                         placeholder="أدخل بريدك الإلكتروني"
-                        onChange={(e)=>{setEmail(e.target.value)}}
+                        onChange={(e) => {
+                          setEmail(e.target.value);
+                        }}
                       />
                     </div>
                     <div className="col  mb-3">
@@ -80,14 +82,16 @@ function Login() {
                         className="form-control password"
                         id="passwordInput" // تم تغيير الـ id هنا
                         placeholder="أدخل كلمة المرور الخاصة بك"
-                        onChange={(e)=>{setPassword(e.target.value)}}
+                        onChange={(e) => {
+                          setPassword(e.target.value);
+                        }}
                       />
                     </div>
                   </form>
                   <div className="col-xl-6 col-12 w-100 mb-5">
                     <div className="login-links  d-flex align-items-center justify-content-between">
                       <div className="col">
-                        <Link>هل نسيت كلمه السر؟</Link>
+                        <Link to="/forget-password">هل نسيت كلمه السر؟</Link>
                       </div>
                       <div className="col d-flex justify-content-end">
                         <div className="form-check">
@@ -109,7 +113,9 @@ function Login() {
                   </div>
                   <div className="col-xl-6 col-12  w-100  mb-3">
                     <div className="login-button">
-                      <button className="d-block w-100" onClick={HandelLogin}>تسجيل الدخول</button>
+                      <button className="d-block w-100" onClick={HandelLogin}>
+                        تسجيل الدخول
+                      </button>
                     </div>
                   </div>
                   <div className="col-xl-6 col-12 w-100  mb-2">
