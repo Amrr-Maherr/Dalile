@@ -1,26 +1,63 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import Swal from "sweetalert2";
 import RegisterImage from "../Assets/Register.png";
 import "../Style/Register.css";
 import SubNav from "../Components/SubNav";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
-    const [FirstName, setFirstName] = useState("")
-    const [SecondName, setSecondName] = useState("");
-    const [Email, setEmail] = useState("")
-    const [PhoneNumber, setPhoneNumber] = useState("");
-    const [Password, setPassword] = useState("");
-    const [UserInfo,setUserInfo] = useState("")
-    const handelForm = (event) => {
-        event.preventDefault()
-    }
-    
-    const HandelRegister = () => {
-        setUserInfo({ name: `${FirstName} ${SecondName}`, email: Email, phone: PhoneNumber, password: Password });
-        
-    }
+  const [FirstName, setFirstName] = useState("");
+  const [SecondName, setSecondName] = useState("");
+  const [Email, setEmail] = useState("");
+  const [PhoneNumber, setPhoneNumber] = useState("");
+  const [Password, setPassword] = useState("");
+  const Navigate = useNavigate()
+
+  const handelForm = (event) => {
+    event.preventDefault();
+  };
+
+  const HandelRegister = () => {
+    const userInfo = {
+      name: `${FirstName} ${SecondName}`,
+      email: Email,
+      phone: PhoneNumber,
+      password: Password,
+    };
+
+    axios
+      .post("https://dalil.mlmcosmo.com/api/register", userInfo)
+      .then((response) => {
+        const successMessage = response.data?.message;
+        Swal.fire({
+          title: "نجاح!",
+          text: successMessage,
+          icon: "success",
+        });
+        JSON.stringify(localStorage.setItem("UseInfo", userInfo));
+        setFirstName("");
+        setSecondName("");
+        setEmail("");
+        setPhoneNumber("");
+        setPassword("");
+        setTimeout(() => {
+          Navigate("/");
+        },2000)
+      })
+      .catch((error) => {
+        const errorMessage = error.response?.data?.message;
+        Swal.fire({
+          icon: "error",
+          title: "خطأ",
+          text: errorMessage,
+        });
+      });
+  };
+
   return (
     <>
-      <SubNav/>
+      <SubNav />
       <section>
         <div className="container">
           <div className="row">
@@ -31,11 +68,7 @@ function Register() {
             </div>
             <div className="col-xl-6 col-12">
               <div className="RegisterForm p-3">
-                <form
-                  onSubmit={(event) => {
-                    handelForm(event);
-                  }}
-                >
+                <form onSubmit={handelForm}>
                   <div className="row">
                     <div className="form-title text-end">
                       <h3>تسجيل جديد</h3>
@@ -52,9 +85,8 @@ function Register() {
                         className="form-control firstNameInput"
                         placeholder="أدخل الاسم الأول"
                         aria-label="First name"
-                        onChange={(e) => {
-                          setFirstName(e.target.value);
-                        }}
+                        value={FirstName}
+                        onChange={(e) => setFirstName(e.target.value)}
                       />
                     </div>
                     <div className="col-xl-6 col-12">
@@ -63,9 +95,8 @@ function Register() {
                         className="form-control secondNameInput"
                         placeholder="أدخل اسم العائلة"
                         aria-label="Last name"
-                        onChange={(e) => {
-                          setSecondName(e.target.value);
-                        }}
+                        value={SecondName}
+                        onChange={(e) => setSecondName(e.target.value)}
                       />
                     </div>
                   </div>
@@ -76,9 +107,8 @@ function Register() {
                         type="email"
                         className="form-control inputEmail"
                         placeholder="أدخل بريدك الإلكتروني"
-                        onChange={(e) => {
-                          setEmail(e.target.value);
-                        }}
+                        value={Email}
+                        onChange={(e) => setEmail(e.target.value)}
                       />
                     </div>
                   </div>
@@ -89,9 +119,8 @@ function Register() {
                         type="number"
                         className="form-control phoneNumber"
                         placeholder="أدخل رقم الهاتف الخاص بك"
-                        onChange={(e) => {
-                          setPhoneNumber(e.target.value);
-                        }}
+                        value={PhoneNumber}
+                        onChange={(e) => setPhoneNumber(e.target.value)}
                       />
                     </div>
                   </div>
@@ -102,9 +131,8 @@ function Register() {
                         type="password"
                         className="form-control inputPassword"
                         placeholder="أدخل كلمة المرور الخاصة بك"
-                        onChange={(e) => {
-                          setPassword(e.target.value);
-                        }}
+                        value={Password}
+                        onChange={(e) => setPassword(e.target.value)}
                       />
                     </div>
                   </div>
@@ -112,10 +140,9 @@ function Register() {
                   <div className="row mb-3">
                     <div className="col-12">
                       <button
-                        className=" w-100 Register-button"
-                        onClick={() => {
-                          HandelRegister();
-                        }}
+                        className="w-100 Register-button"
+                        type="button"
+                        onClick={HandelRegister}
                       >
                         تسجيل جديد
                       </button>
@@ -124,7 +151,7 @@ function Register() {
                   <div className="row">
                     <div className="col-12 text-end">
                       <input
-                        className="form-check-input"
+                        className="form-check-input mx-2"
                         type="checkbox"
                         id="flexCheckDefault"
                       />
