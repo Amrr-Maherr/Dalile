@@ -28,7 +28,7 @@ section .container .row
         color: rgba(161, 168, 176, 1);
         padding-right: 15px;
 }
-.RegisterForm input {
+.RegisterForm form input {
     -o-border-radius: 15px;
         -webkit-border-radius: 15px;
         -moz-border-radius: 15px;
