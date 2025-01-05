@@ -26,8 +26,8 @@ section .row .login-form input::placeholder {
         text-align: right;
         padding-right: 15px;
 }
-section .row .login-form .email , .password {
-        max-width: 545px;
+section .row .login-form .email , section .row .login-form .password {
+        width: 545px;
         height: 59px;
         border-radius: 15px;
         -webkit-border-radius: 15px;
@@ -56,6 +56,9 @@ section .row .login-form .login-button button {
         font-weight: 600;
         color: rgba(244, 0, 0, 1);
 }
+.login-links {
+    max-width: 545px;
+}
 .login-register {
     text-align: center;
         font-size: 20px;
@@ -64,4 +67,7 @@ section .row .login-form .login-button button {
 .login-register a {
     text-decoration: none;
     color: rgba(237, 184, 44, 1);
+}
+.log {
+    width: 545px;
 }

@@ -72,3 +72,15 @@ section .container .row .Register-button {
 .form-check-label span {
     color: rgba(237, 184, 44, 1);
 }
+.form-check-input {
+        width: 25px;
+        height: 25px;
+        border-radius: 8px;
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        -ms-border-radius: 8px;
+        -o-border-radius: 8px;
+}
+.log {
+    width: 545px;
+}

@@ -70,7 +70,7 @@ function Register() {
       <SubNav />
       <section>
         <div className="container">
-          <div className="row">
+          <div className="row w-100  d-flex justify-content-between align-items-center">
             <div
               className="col-xl-6 col-12 d-flex justify-content-center align-items-center mb-4"
               data-aos="fade-up"
@@ -79,7 +79,7 @@ function Register() {
                 <img src={RegisterImage} alt="" className="img-fluid" />
               </div>
             </div>
-            <div className="col-xl-6 col-12" data-aos="zoom-in">
+            <div className="col-xl-6 col-12 log" data-aos="zoom-in">
               <div className="RegisterForm p-3">
                 <form onSubmit={handelForm}>
                   <div className="row">

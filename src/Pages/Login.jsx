@@ -64,13 +64,17 @@ function Login() {
       <SubNav />
       <section>
         <div className="container">
-          <div className="row mt-4">
-            <div className="col-xl-6 col-12" data-aos="fade-right">
+          <div className="row mt-4 w-100 d-flex align-items-center justify-content-between">
+            <div
+              className="col-xl-6 col-12"
+              data-aos="fade-right"
+            >
               <div className="login-image">
                 <img src={loginImage} alt="" />
               </div>
             </div>
-            <div className="col-xl-6 col-12 mb-5" data-aos="fade-left">
+            <div
+              className="col-xl-6 col-12 mb-5 log " data-aos="fade-left">
               <div className="login-title text-end">
                 <h3>تسجيل دخول</h3>
                 <p>تسجيل الدخول للوصول إلى حسابك</p>
@@ -102,10 +106,10 @@ function Login() {
                 </form>
                 <div className="col-xl-6 col-12 w-100 mb-5" data-aos="fade-up">
                   <div className="login-links d-flex align-items-center justify-content-between">
-                    <div className="col">
+                    <div className="">
                       <Link to="/forget-password">هل نسيت كلمه السر؟</Link>
                     </div>
-                    <div className="col d-flex justify-content-end">
+                    <div className="d-flex justify-content-end">
                       <div className="form-check">
                         <input
                           className="form-check-input"
