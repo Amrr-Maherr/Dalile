@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import RegisterImage from "../Assets/Register.png";
 import "../Style/Register.css";
+import SubNav from "../Components/SubNav";
 
 function Register() {
     const [FirstName, setFirstName] = useState("")
@@ -19,6 +20,7 @@ function Register() {
     }
   return (
     <>
+      <SubNav/>
       <section>
         <div className="container">
           <div className="row">
