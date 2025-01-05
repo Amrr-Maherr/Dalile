@@ -19,7 +19,7 @@ function Login() {
             email: Email, // تم تعديلها لتصبح email بدلاً من name
             password: Password // تم تعديلها لتصبح password بدلاً من email
         };
-        
+        localStorage.setItem("user",JSON.stringify(UserInfo))
         axios
           .post("https://dalil.mlmcosmo.com/api/login", UserInfo)
           .then((response) => {
@@ -52,7 +52,7 @@ function Login() {
         <SubNav />
         <section>
           <div className="container">
-            <div className="row">
+            <div className="row mt-4">
               <div className="col-xl-6 col-12">
                 <div className="login-image">
                   <img src={loginImage} alt="" />

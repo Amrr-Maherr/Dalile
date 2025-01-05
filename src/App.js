@@ -8,6 +8,7 @@ import Register from './Pages/Register';
 import Login from './Pages/Login';
 import ForgetPassword from "./Pages/ForgetPassword";
 import VerificationCode from './Pages/VerificationCode';
+import ResetPassword from './Pages/ResetPassword';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/forget-password" element={<ForgetPassword />} />
           <Route path="/verification-code" element={<VerificationCode />} />
+          <Route path="/reset-password" element={<ResetPassword/>} />
         </Routes>
       </div>
     </BrowserRouter>

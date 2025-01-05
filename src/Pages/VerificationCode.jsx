@@ -70,7 +70,7 @@ function VerificationCode() {
     inputFour.current.value = "";
 
     // الانتقال إلى الصفحة التالية (أو الصفحة التي تريدها)
-    Navigate("/nextPage");
+    Navigate("/reset-password");
   };
 
   return (
