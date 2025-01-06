@@ -61,20 +61,18 @@ function Login() {
 
   return (
     <>
-      <SubNav />
+      <div data-aos="fade-right">
+        <SubNav />
+      </div>
       <section>
         <div className="container">
           <div className="row mt-4 w-100 d-flex align-items-center justify-content-between">
-            <div
-              className="col-xl-6 col-12"
-              data-aos="fade-right"
-            >
+            <div className="col-xl-6 col-12" data-aos="fade-right">
               <div className="login-image">
                 <img src={loginImage} alt="" />
               </div>
             </div>
-            <div
-              className="col-xl-6 col-12 mb-5 log " data-aos="fade-left">
+            <div className="col-xl-6 col-12 mb-5 log " data-aos="fade-left">
               <div className="login-title text-end">
                 <h3>تسجيل دخول</h3>
                 <p>تسجيل الدخول للوصول إلى حسابك</p>

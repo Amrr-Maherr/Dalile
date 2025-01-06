@@ -55,7 +55,9 @@ function ForgetPassword() {
 
   return (
     <>
-      <SubNav />
+      <div data-aos="fade-right">
+        <SubNav />
+      </div>
       <section>
         <div className="container">
           <div className="row">
