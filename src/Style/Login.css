@@ -27,7 +27,7 @@ section .row .login-form input::placeholder {
         padding-right: 15px;
 }
 section .row .login-form .email , section .row .login-form .password {
-        width: 545px;
+        max-width: 545px;
         height: 59px;
         border-radius: 15px;
         -webkit-border-radius: 15px;
