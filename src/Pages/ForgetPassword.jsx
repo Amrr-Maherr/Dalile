@@ -68,7 +68,7 @@ function ForgetPassword() {
               </div>
             </div>
             <div
-              className="col-xl-6 col-12 d-flex align-items-center justify-content-end"
+              className="col-xl-6 col-12 d-flex align-items-center justify-content-end log"
               data-aos="fade-left" // تأثير fade-left عند التمرير
             >
               <div className="forgetPassword-form text-end w-100">

@@ -77,3 +77,6 @@ section .container .row .VerificationCode-resend-link a {
     color: rgba(237, 184, 44, 1);
     text-decoration: none;
 }
+.log {
+    width: 545px;
+}

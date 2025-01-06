@@ -3,78 +3,83 @@ import SubNav from "../Components/SubNav";
 import "../Style/VerificationCode.css";
 import Swal from "sweetalert2";
 import ResetImage from "../Assets/reset.png";
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 function VerificationCode() {
-  const inputOne = useRef();
-  const inputTwo = useRef();
-  const inputThree = useRef();
-  const inputFour = useRef();
-  const Navigate = useNavigate();
+  const [inputOne, setInputOne] = useState("");
+  const [inputTwo, setInputTwo] = useState("");
+  const [inputThree, setInputThree] = useState("");
+  const [inputFour, setInputFour] = useState("");
+  const navigate = useNavigate();
   const email = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
     AOS.init({
-      duration: 1000, // وقت الأنيميشن
-      easing: "ease-in-out", // نوع التوقيت
-      once: true, // تطبيق الأنيميشن مرة واحدة فقط
+      duration: 1000,
+      easing: "ease-in-out",
+      once: true,
     });
   }, []);
 
-  const HandelResendCode = () => {
+  const handleResendCode = () => {
     const Email = { identifier: email };
     axios
       .post("https://dalil.mlmcosmo.com/api/forgot-password", Email)
       .then((response) => {
-        const successMessage = response.data?.message;
         Swal.fire({
           title: "نجاح!",
-          text: successMessage,
+          text: response.data?.message,
           icon: "success",
         });
       })
       .catch((error) => {
-        const errorMessage = error.response?.data?.message;
         Swal.fire({
           icon: "error",
           title: "خطأ",
-          text: errorMessage,
+          text: error.response?.data?.message || "حدث خطأ ما",
         });
       });
   };
 
-  const HandelSavCode = () => {
-    const codeOne = inputOne.current.value;
-    const codeTwo = inputTwo.current.value;
-    const codeThree = inputThree.current.value;
-    const codeFour = inputFour.current.value;
-
-    if (
-      codeOne === "" ||
-      codeTwo === "" ||
-      codeThree === "" ||
-      codeFour === ""
-    ) {
-      alert("يرجى إدخال جميع الأرقام.");
+  const handleSaveCode = () => {
+    if (!inputOne || !inputTwo || !inputThree || !inputFour) {
+      Swal.fire({
+        icon: "warning",
+        title: "تحذير",
+        text: "يرجى إدخال جميع الأرقام.",
+      });
+      return;
     }
 
-    const Code = {
-      code: `${codeOne}${codeTwo}${codeThree}${codeFour}`,
-    };
-
-    localStorage.setItem("code", JSON.stringify(Code));
-
-    inputOne.current.value = "";
-    inputTwo.current.value = "";
-    inputThree.current.value = "";
-    inputFour.current.value = "";
-
-    setTimeout(() => {
-      Navigate("/reset-password");
-    }, 2000);
+    const code = `${inputOne}${inputTwo}${inputThree}${inputFour}`;
+    axios
+      .post("https://dalil.mlmcosmo.com/api/verify-code", {
+        identifier: email,
+        code,
+      })
+      .then((response) => {
+        Swal.fire({
+          title: "نجاح!",
+          text: "تم التحقق من الرمز بنجاح.",
+          icon: "success",
+        });
+        localStorage.setItem("code", JSON.stringify(code));
+        navigate("/login")
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "خطأ",
+          text: error.response?.data?.message || "حدث خطأ ما",
+        });
+      });
+    setInputOne("");
+    setInputTwo("");
+    setInputThree("");
+    setInputFour("");
   };
 
   return (
@@ -83,78 +88,70 @@ function VerificationCode() {
       <section>
         <div className="container">
           <div className="row">
-            <div
-              className="col-xl-6 col-12"
-              data-aos="fade-right" // تأثير fade-right عند التمرير
-            >
+            <div className="col-xl-6 col-12" data-aos="fade-right">
               <div className="VerificationCode-image">
-                <img src={ResetImage} alt="" />
+                <img src={ResetImage} alt="Reset illustration" />
               </div>
             </div>
-            <div
-              className="col-xl-6 col-12 text-end"
-              data-aos="fade-left" // تأثير fade-left عند التمرير
-            >
+            <div className="col-xl-6 col-12 text-end log" data-aos="fade-left">
               <div className="VerificationCode-link mb-4 mt-5">
                 <Link to="/login">
                   الرجوع لتسجيل الدخول
                   <i className="fa fa-chevron-right mx-2"></i>
                 </Link>
               </div>
-              <div
-                className="VerificationCode-title mb-4"
-                data-aos="fade-up" // تأثير fade-up عند التمرير
-              >
+              <div className="VerificationCode-title mb-4" data-aos="fade-up">
                 <h3>ادخل رمز التحقق</h3>
                 <p>دخل الرمز الذي أرسلناه إلى رقمك 7698234***</p>
               </div>
-              <div
-                className="VerificationCode-form mb-5"
-                data-aos="fade-up" // تأثير fade-up عند التمرير
-              >
+              <div className="VerificationCode-form mb-5" data-aos="fade-up">
                 <form className="d-flex align-items-center gap-4 justify-content-end">
                   <input
-                    type="number"
+                    type="text"
                     min={0}
                     max={9}
-                    ref={inputOne}
-                    data-aos="zoom-in" // تأثير zoom-in عند التمرير
+                    value={inputOne}
+                    onChange={(e) => setInputOne(e.target.value)}
+                    aria-label="Digit 1"
                   />
                   <input
-                    type="number"
+                    type="text"
                     min={0}
                     max={9}
-                    ref={inputTwo}
-                    data-aos="zoom-in" // تأثير zoom-in عند التمرير
+                    value={inputTwo}
+                    onChange={(e) => setInputTwo(e.target.value)}
+                    aria-label="Digit 2"
                   />
                   <input
-                    type="number"
+                    type="text"
                     min={0}
                     max={9}
-                    ref={inputThree}
-                    data-aos="zoom-in" // تأثير zoom-in عند التمرير
+                    value={inputThree}
+                    onChange={(e) => setInputThree(e.target.value)}
+                    aria-label="Digit 3"
                   />
                   <input
-                    type="number"
+                    type="text"
                     min={0}
                     max={9}
-                    ref={inputFour}
-                    data-aos="zoom-in" // تأثير zoom-in عند التمرير
+                    value={inputFour}
+                    onChange={(e) => setInputFour(e.target.value)}
+                    aria-label="Digit 4"
                   />
                 </form>
               </div>
               <div
                 className="VerificationCode-button mb-4 w-100"
-                data-aos="fade-up" // تأثير fade-up عند التمرير
+                data-aos="fade-up"
               >
-                <button className="d-block w-100" onClick={HandelSavCode}>
+                <button className="d-block w-100" onClick={handleSaveCode}>
                   التالى
                 </button>
               </div>
               <div className="VerificationCode-resend-link text-center">
                 <p>
-                  لم تتلق الرمز?{" "}
-                  <Link onClick={() => HandelResendCode()}>اعاده ارسال</Link>
+                  لم تتلق الرمز؟{" "}
+                  <Link onClick={handleResendCode}>إعادة الإرسال</Link>
                 </p>
               </div>
             </div>
