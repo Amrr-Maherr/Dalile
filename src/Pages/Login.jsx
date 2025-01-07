@@ -92,12 +92,12 @@ function Login() {
             </div>
             <div className="col-xl-6 col-12 mb-5 log " data-aos="fade-left">
               <div className="login-title text-end">
-                <h3>تسجيل دخول</h3>
+                <h3 className="fs-1 fs-sm-4 fs-md-5">تسجيل دخول</h3>
                 <p>تسجيل الدخول للوصول إلى حسابك</p>
               </div>
               <div className="login-form mb-5">
                 <form onSubmit={HandelForm}>
-                  <div className="col mb-5" data-aos="fade-up">
+                  <div className="col mb-4" data-aos="fade-up">
                     <div className="input-container">
                       <input
                         type="email"
@@ -112,8 +112,7 @@ function Login() {
                     </div>
                   </div>
 
-                  <div className="col mb-3" data-aos="fade-up">
-                    <div className="col mb-3" data-aos="fade-up">
+                    <div className="col mb-2" data-aos="fade-up">
                       {show ? (
                         <>
                           <div className="input-container">
@@ -156,12 +155,16 @@ function Login() {
                         </>
                       )}
                     </div>
-                  </div>
                 </form>
-                <div className="col-xl-6 col-12 w-100 mb-5" data-aos="fade-up">
+                <div className="col-xl-6 col-12 w-100 my-4" data-aos="fade-up">
                   <div className="login-links d-flex align-items-center justify-content-between">
                     <div className="">
-                      <Link to="/forget-password">هل نسيت كلمه السر؟</Link>
+                      <Link
+                        to="/forget-password"
+                        className="fs-6 fs-sm-4 fs-md-5"
+                      >
+                        هل نسيت كلمه السر؟
+                      </Link>
                     </div>
                     <div className="d-flex justify-content-end">
                       <div className="form-check">
@@ -172,7 +175,7 @@ function Login() {
                           id="flexCheckDefault"
                         />
                         <label
-                          className="form-check-label"
+                          className="form-check-label fs-6 fs-sm-4 fs-md-5"
                           htmlFor="flexCheckDefault"
                         >
                           تذكرنى
@@ -190,7 +193,7 @@ function Login() {
                 </div>
                 <div className="col-xl-6 col-12 w-100 mb-2">
                   <div className="login-register">
-                    <p>
+                    <p className="fs-6 fs-sm-4 fs-md-5">
                       ليس لديك حساب ?<Link to="/register">سجل الان</Link>
                     </p>
                   </div>
