@@ -5,6 +5,7 @@ import "../Style/HomeStyle.css";
 import NearbyPlaces from "./NearbyPlaces";
 import NearbyPlacesCard from "../Components/NearbyPlacesCard";
 import axios from "axios";
+import CategoriesNavigator from "../Components/CategoriesNavigator";
 
 function Home() {
   const [loading, setLoading] = useState(true);
@@ -112,6 +113,11 @@ function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+      <section> 
+        <div className="container">
+          <CategoriesNavigator/>
         </div>
       </section>
     </>

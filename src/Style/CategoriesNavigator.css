@@ -1,0 +1,46 @@
+.f-card {
+    background-image: url(../Assets/f-card.png);
+    background-position: center center;
+}
+.s-card {
+    background-image: url(../Assets/s-card.png);
+        background-position: center center;
+}
+.CategoriesNavigator-card {
+            color: rgba(255, 255, 255, 1);
+            max-width: 601.56px;
+            height: 560px;
+            border-radius: 20px;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            -ms-border-radius: 20px;
+            -o-border-radius: 20px;
+            display: flex;
+            align-items: end;
+            justify-content: center;
+}
+.CategoriesNavigator-card .card-content .card-text h3 {
+        font-size: 32px;
+        font-weight: 700;
+}
+.CategoriesNavigator-card .card-text p {
+            font-size: 16px;
+            font-weight: 400;
+}
+.CategoriesNavigator-card .card-button {
+    margin-bottom: 25px;
+}
+.CategoriesNavigator-card .card-button button {
+        width: 163.34px;
+        height: 48px;
+        -o-border-radius: 8px;
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        -ms-border-radius: 8px;
+        border-radius: 8px;
+        background-color: rgba(237, 184, 44, 1);
+        border: none;
+            font-size: 14px;
+            font-weight: 700;
+            color: white;
+}
