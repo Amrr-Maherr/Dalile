@@ -31,7 +31,7 @@ function VerificationCode() {
       .then((response) => {
         Swal.fire({
           title: "نجاح!",
-          text: response.data?.message,
+          text: response.data.message,
           icon: "success",
         });
       })
@@ -39,7 +39,7 @@ function VerificationCode() {
         Swal.fire({
           icon: "error",
           title: "خطأ",
-          text: error.response?.data?.message || "حدث خطأ ما",
+          text: error.response.data.message || "حدث خطأ ما",
         });
       });
   };
@@ -67,7 +67,7 @@ function VerificationCode() {
           icon: "success",
         });
         localStorage.setItem("code", JSON.stringify(code));
-        navigate("/login")
+        navigate("/reset-password")
       })
       .catch((error) => {
         Swal.fire({

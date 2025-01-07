@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import NavBar from "../Components/NavBar";
 import "../Style/HomeStyle.css";
+import NearbyPlaces from "./NearbyPlaces";
 function Home() {
   return (
     <>
@@ -18,6 +19,15 @@ function Home() {
               <Link to="/register" className="register-btn btn">تسجيل</Link>
               <Link to="login" className="login-btn btn">تسجيل دخول</Link>
               <button  className="logout-btn btn">تسجيل خروج</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div className="container my-5">
+          <div className="row">
+            <div className="col-12">
+              <NearbyPlaces/>
             </div>
           </div>
         </div>

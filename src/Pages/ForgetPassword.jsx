@@ -37,7 +37,7 @@ function ForgetPassword() {
           text: successMessage,
           icon: "success",
         });
-
+        localStorage.setItem("user", JSON.stringify(Identifier));
         setEmail("");
         setTimeout(() => {
           Navigate("/verification-code");
