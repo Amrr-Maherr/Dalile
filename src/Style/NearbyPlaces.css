@@ -17,7 +17,7 @@ section .container .row .NearbyPlaces-title h3 {
         margin: 10px 0px;
 }
 section .container .row .NearbyPlaces-title .NearbyPlaces-hr {
-    width: 397px;
+    max-width: 397px;
         height: 3px;
         background-color: rgba(237, 184, 44, 1);
         margin-bottom: 10px;

@@ -1,5 +1,5 @@
 section .container .row .card {
-        width: 389px;
+        max-width: 389px;
         height: 122px;
         -o-border-radius: 20px;
         -webkit-border-radius: 20px;
