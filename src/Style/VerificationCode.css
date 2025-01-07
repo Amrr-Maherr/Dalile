@@ -40,6 +40,7 @@ section .container .row .VerificationCode-form form input {
     -moz-transition: 0.5s;
     -ms-transition: 0.5s;
     -o-transition: 0.5s;
+    margin: 0px auto;
 }
 
 section .container .row .VerificationCode-form form input:focus {

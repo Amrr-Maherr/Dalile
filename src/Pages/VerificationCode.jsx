@@ -112,8 +112,8 @@ function VerificationCode() {
                 <h3>ادخل رمز التحقق</h3>
                 <p>دخل الرمز الذي أرسلناه إلى رقمك 7698234***</p>
               </div>
-              <div className="VerificationCode-form mb-5" data-aos="fade-up">
-                <form className="d-flex align-items-center gap-4 justify-content-end">
+              <div className="VerificationCode-form mb-5 " data-aos="fade-up">
+                <form className="d-flex align-items-center  flex-wrap gap-4 justify-content-end">
                   <input
                     type="text"
                     min={0}
