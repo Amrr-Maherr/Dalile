@@ -7,6 +7,7 @@ import NearbyPlacesCard from "../Components/NearbyPlacesCard";
 import axios from "axios";
 import CategoriesNavigator from "../Components/CategoriesNavigator";
 import BestRestaurants from "../Components/BestRestaurants";
+import Footer from "../Components/Footer";
 
 function Home() {
   const token = JSON.parse(localStorage.getItem("AuthToken"))
@@ -126,6 +127,7 @@ function Home() {
           <BestRestaurants/>
         </div>
       </section>
+      <Footer/>
     </>
   );
 }

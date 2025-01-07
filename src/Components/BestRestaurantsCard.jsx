@@ -7,7 +7,7 @@ function BestRestaurantsCard({ restaurant }) {
         <div className="BestRestaurantsCard-image">
           <img src={restaurant.cover_image} alt="" />
         </div>
-        <div className="BestRestaurantsCard-body text-end mt-3">
+        <div className="BestRestaurantsCard-body text-end p-3">
           <div className="card-title">
             <h3>{restaurant.name}</h3>
           </div>

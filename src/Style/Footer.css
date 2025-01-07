@@ -1,0 +1,51 @@
+footer {
+    background-color: rgba(212, 221, 183, 1);
+    width: 100%;
+    height: auto;
+}
+
+footer p.h5 {
+    margin-bottom: 25px;
+        font-size: 24px;
+        font-weight: 700;
+}
+footer ul li a{
+        font-size: 18px;
+        font-weight: 600;
+        text-decoration: none;
+        color: black;
+}
+footer .form-title h2 {
+        font-size: 64px;
+        font-weight: 400;
+}
+footer button {
+        width: 163px;
+        height: 73px;
+        border-radius:12px;
+        -webkit-border-radius:12px;
+        -moz-border-radius:12px;
+        -ms-border-radius:12px;
+        -o-border-radius:12px;
+        background-color: rgba(208, 162, 38, 1);
+        border: none;
+            font-size: 20px;
+            font-weight: 600;
+}
+footer .email {
+    max-width: 315px;
+        height: 72px;
+        background-color: rgba(208, 162, 38, 0.2);
+}
+footer .email::placeholder {
+        font-size: 20px;
+        font-weight: 600;
+        color: rgba(208, 162, 38, 1);
+}
+footer .email:focus {
+    background-color: rgba(208, 162, 38, 0.2);
+}
+label {
+        font-size: 20px;
+        font-weight: 400;
+}
