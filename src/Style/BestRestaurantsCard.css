@@ -1,0 +1,50 @@
+.BestRestaurantsCard-card {
+        max-width: 300px;
+        height: 385px;
+        border-radius: 26px;
+        -webkit-border-radius: 26px;
+        -moz-border-radius: 26px;
+        -ms-border-radius: 26px;
+        -o-border-radius: 26px;
+}
+.BestRestaurantsCard-image  {
+    max-width: 300px;
+    height: 203px;
+}
+.BestRestaurantsCard-image img {
+    width: 100%;
+    height: 100%;
+}
+.BestRestaurantsCard-body {
+    background-color: rgba(255, 248, 241, 1);
+    padding: 10px 10px;
+}
+.BestRestaurantsCard-body .card-title h3{
+        font-size: 20px;
+        font-weight: 600;
+}
+.BestRestaurantsCard-body .card-rev p  {
+        font-size: 16px;
+        font-weight: 600;
+        color: rgba(53, 53, 53, 1);
+}
+.BestRestaurantsCard-body .card-add p{
+        font-size: 16px;
+        font-weight: 500;
+        color: rgba(0, 0, 0, 1);
+}
+.BestRestaurantsCard-body .card-sta .hr {
+    width: 1px;
+        height: 35px;
+        background-color: rgba(0, 0, 0, 0.5);
+}
+.BestRestaurantsCard-body .card-sta .open p {
+        font-size: 16px;
+        font-weight: 500;
+        color: rgba(14, 127, 61, 1);
+}
+.BestRestaurantsCard-body .card-sta .close p {
+        font-size: 16px;
+        font-weight: 400;
+        color: rgba(99, 99, 99, 1);
+}
