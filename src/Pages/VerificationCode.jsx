@@ -22,10 +22,11 @@ function VerificationCode() {
       easing: "ease-in-out",
       once: true,
     });
+    console.log(email.identifier);
   }, []);
 
   const handleResendCode = () => {
-    const Email = { identifier: email };
+    const Email = { identifier: email.identifier };
     axios
       .post("https://dalil.mlmcosmo.com/api/forgot-password", Email)
       .then((response) => {
@@ -113,7 +114,7 @@ function VerificationCode() {
                 <p>دخل الرمز الذي أرسلناه إلى رقمك 7698234***</p>
               </div>
               <div className="VerificationCode-form mb-5 " data-aos="fade-up">
-                <form className="d-flex align-items-center  flex-wrap gap-4 justify-content-end">
+                <form className="d-flex align-items-center  flex-wrap gap-1 justify-content-end">
                   <input
                     type="text"
                     min={0}
