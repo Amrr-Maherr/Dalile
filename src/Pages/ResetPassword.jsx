@@ -12,6 +12,7 @@ function ResetPassword() {
   const [Password, setPassword] = useState("");
   const [NewPassword, setNewPassword] = useState("");
   const [FormData, setFormData] = useState({});
+  const [show, setShow] = useState(false);
   const Navigate = useNavigate();
   const email = JSON.parse(localStorage.getItem("user"));
   const UserCode = JSON.parse(localStorage.getItem("code"));
@@ -22,52 +23,37 @@ function ResetPassword() {
       easing: "ease-in-out",
       once: true,
     });
+  }, []);
 
-    if (email && UserCode) {
-      setFormData({
-        identifier: email.email,
-        code: UserCode.code,
-        password: NewPassword,
-      });
-    }
-  }, [NewPassword, email, UserCode]);
+  const showPass = () => {
+    setShow(!show);
+  };
 
   const HandelFrom = (e) => {
     e.preventDefault();
-    HandelResetPassword();
   };
 
   const HandelResetPassword = () => {
-    if (Password === "" || NewPassword === "") {
-      Swal.fire({
-        icon: "error",
-        title: "خطأ",
-        text: "الرجاء ملء جميع الحقول.",
-      });
+    if (!Password || !NewPassword) {
+      Swal.fire("خطأ", "يرجى إدخال جميع الحقول", "error");
     } else {
-      setFormData({
-        identifier: email,
-        code: UserCode.code,
+      const formData = {
+        identifier: email.identifier,
+        code: UserCode,
         password: NewPassword,
-      });
+      };
       axios
-        .post("https://dalil.mlmcosmo.com/api/reset-password", FormData) // تأكد من صحة الرابط
+        .post("https://dalil.mlmcosmo.com/api/update-password", formData)
         .then((response) => {
-          const successMessage = response.data?.message;
-          Swal.fire({
-            title: "نجاح!",
-            text: successMessage,
-            icon: "success",
-          });
+          Swal.fire("تم بنجاح", "تم تحديث كلمة المرور بنجاح", "success");
           Navigate("/login");
         })
         .catch((error) => {
-          const errorMessage = error.response?.data?.message || "حدث خطأ";
-          Swal.fire({
-            icon: "error",
-            title: "خطأ",
-            text: errorMessage,
-          });
+          Swal.fire(
+            "خطأ",
+            error.response?.data?.message || "حدث خطأ ما",
+            "error"
+          );
         });
     }
   };
@@ -79,47 +65,110 @@ function ResetPassword() {
       </div>
       <section>
         <div className="container">
-          <div className="row mt-4">
-            <div className="col-xl-6 col-12" data-aos="fade-right">
+          <div
+            className="row d-flex align-items-center justify-content-center"
+            data-aos="fade-up"
+          >
+            <div className="col-xl-6 col-12" data-aos="zoom-in">
               <div className="resetPassword-image">
-                <img src={ResetPasswordImage} alt="Reset Password" />
+                <img src={ResetPasswordImage} alt="" />
               </div>
             </div>
             <div className="col-xl-6 col-12 text-end" data-aos="fade-left">
-              <div className="resetPassword-form">
-                <div className="resetPassword-link my-4" data-aos="fade-up">
-                  <Link to="/login">
-                    الرجوع لتسجيل الدخول
-                    <i className="fa fa-chevron-right mx-2"></i>
-                  </Link>
-                </div>
-                <div className="resetPassword-title my-4" data-aos="fade-up">
-                  <h3>ادخل كلمه سر جديدة</h3>
-                  <p>دخل الرمز الذي أرسلناه إلى رقمك 7698234***</p>
-                </div>
-                <form onSubmit={HandelFrom}>
-                  <input
-                    type="password"
-                    className="form-control my-4"
-                    id="inputPassword1"
-                    placeholder="أدخل كلمة المرور الحالية"
-                    onChange={(e) => setPassword(e.target.value)}
-                    data-aos="fade-up"
-                  />
-                  <input
-                    type="password"
-                    className="form-control"
-                    id="inputPassword2"
-                    placeholder="أدخل كلمة المرور الجديدة"
-                    onChange={(e) => setNewPassword(e.target.value)}
-                    data-aos="fade-up"
-                  />
-                  <div className="resetPassword-button mt-5" data-aos="fade-up">
-                    <button className="d-block w-100" type="submit">
-                      انشاء كلمة مرور جديدة
-                    </button>
+              <div className="resetPassword-link">
+                <Link to="/login">الرجوع لتسجيل الدخول</Link>
+              </div>
+              <div className="resetPassword-title">
+                <h3>ادخل كلمه سر جديده</h3>
+                <p>دخل الرمز الذي أرسلناه إلى رقمك 7698234***</p>
+              </div>
+              {show ? (
+                <>
+                  <div
+                    className="resetPassword-form my-4"
+                    data-aos="fade-right"
+                  >
+                    <div className="input-group mb-3">
+                      <span className="input-icon">
+                        <i
+                          className="fa fa-lock"
+                          onClick={() => {
+                            showPass();
+                          }}
+                        ></i>
+                      </span>
+                      <input
+                        type="password"
+                        className="form-control"
+                        placeholder="أدخل كلمة المرور الخاصة بك"
+                        onChange={(e) => setPassword(e.target.value)}
+                      />
+                    </div>
+                    <div className="input-group mb-3">
+                      <span
+                        className="input-icon"
+                        onClick={() => {
+                          showPass();
+                        }}
+                      >
+                        <i className="fa fa-key"></i>
+                      </span>
+                      <input
+                        type="password"
+                        className="form-control"
+                        placeholder="أدخل تأكيد كلمة المرور"
+                        onChange={(e) => setNewPassword(e.target.value)}
+                      />
+                    </div>
                   </div>
-                </form>
+                </>
+              ) : (
+                <>
+                  <div className="resetPassword-form my-4" data-aos="fade-left">
+                    <div className="input-group mb-3">
+                      <span
+                        className="input-icon"
+                        onClick={() => {
+                          showPass();
+                        }}
+                      >
+                        <i className="fa fa-lock"></i>
+                      </span>
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="أدخل كلمة المرور الخاصة بك"
+                        onChange={(e) => setPassword(e.target.value)}
+                      />
+                    </div>
+                    <div className="input-group mb-3">
+                      <span
+                        className="input-icon"
+                        onClick={() => {
+                          showPass();
+                        }}
+                      >
+                        <i className="fa fa-key"></i>
+                      </span>
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="أدخل تأكيد كلمة المرور"
+                        onChange={(e) => setNewPassword(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
+              <div className="resetPassword-button">
+                <button
+                  className="b-block w-100"
+                  onClick={() => {
+                    HandelResetPassword();
+                  }}
+                >
+                  انشاء كلمه مرور جديده
+                </button>
               </div>
             </div>
           </div>

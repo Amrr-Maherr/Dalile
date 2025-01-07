@@ -61,20 +61,26 @@ function VerificationCode() {
         code,
       })
       .then((response) => {
-        Swal.fire({
-          title: "نجاح!",
-          text: "تم التحقق من الرمز بنجاح.",
-          icon: "success",
-        });
+        const successMessage = response.data.message;
+                  Swal.fire({
+                    title: "تمت العملية بنجاح",
+                    text: successMessage,
+                    icon: "success",
+                    background: "#F9F9F9",
+                    confirmButtonColor: "#EDB82C",
+                    confirmButtonText: "حسنا",
+                  });
         localStorage.setItem("code", JSON.stringify(code));
         navigate("/reset-password")
       })
       .catch((error) => {
-        Swal.fire({
-          icon: "error",
-          title: "خطأ",
-          text: error.response?.data?.message || "حدث خطأ ما",
-        });
+        const errorMessage = error.response.data.message;
+                  Swal.fire({
+                    icon: "error",
+                    title: "خطا",
+                    confirmButtonColor: "#EDB82C",
+                    text: errorMessage,
+                  });
       });
     setInputOne("");
     setInputTwo("");
