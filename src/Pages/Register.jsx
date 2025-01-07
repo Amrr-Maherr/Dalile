@@ -14,6 +14,7 @@ function Register() {
   const [Email, setEmail] = useState("");
   const [PhoneNumber, setPhoneNumber] = useState("");
   const [Password, setPassword] = useState("");
+  const [show, setShow] = useState(false);
   const Navigate = useNavigate();
 
   useEffect(() => {
@@ -23,6 +24,10 @@ function Register() {
       once: true, // تشغيل الأنيميشن مرة واحدة
     });
   }, []);
+
+  const showPass = () => {
+    setShow(!show);
+  };
 
   const handelForm = (event) => {
     event.preventDefault();
@@ -35,42 +40,56 @@ function Register() {
       phone: PhoneNumber,
       password: Password,
     };
-
-    axios
-      .post("https://dalil.mlmcosmo.com/api/register", userInfo)
-      .then((response) => {
-        const successMessage = response.data?.message;
-        Swal.fire({
-          title: "نجاح!",
-          text: successMessage,
-          icon: "success",
-        });
-        localStorage.setItem("UserInfo", JSON.stringify(userInfo));
-        setFirstName("");
-        setSecondName("");
-        setEmail("");
-        setPhoneNumber("");
-        setPassword("");
-        setTimeout(() => {
-          Navigate("/login");
-        }, 2000);
-      })
-      .catch((error) => {
-        const errorMessage = error.response?.data?.message;
-        Swal.fire({
-          icon: "error",
-          title: "خطأ",
-          text: errorMessage,
-        });
+    if (!(FirstName || SecondName) || !Email || !PhoneNumber || !Password) {
+      Swal.fire({
+        icon: "error",
+        title: "عذرًا...",
+        text: "يرجى ملء جميع الحقول!",
+        background: "#F9F9F9",
+        confirmButtonColor: "red",
+        confirmButtonText: "حسنا",
       });
+    } else {
+      axios
+        .post("https://dalil.mlmcosmo.com/api/register", userInfo)
+        .then((response) => {
+          const successMessage = response.data.message;
+          Swal.fire({
+            title: "تمت العملية بنجاح",
+            text: successMessage,
+            icon: "success",
+            background: "#F9F9F9",
+            confirmButtonColor: "#EDB82C",
+            confirmButtonText: "تسجيل الدخول",
+          });
+          setFirstName("");
+          setSecondName("");
+          setEmail("");
+          setPhoneNumber("");
+          setPassword("");
+          setTimeout(() => {
+            Navigate("/login");
+          }, 2000);
+        })
+        .catch((error) => {
+          const errorMessage = error.response.data.message;
+          Swal.fire({
+            icon: "error",
+            title: "فشل التسجيل",
+            text: errorMessage,
+          });
+        });
+    }
   };
 
   return (
     <>
-      <SubNav />
+      <div data-aos="zoom-in">
+        <SubNav />
+      </div>
       <section>
-        <div className="container">
-          <div className="row w-100  d-flex justify-content-between align-items-center">
+        <div className="container ">
+          <div className="row d-flex justify-content-between align-items-center">
             <div
               className="col-xl-6 col-12 d-flex justify-content-center align-items-center mb-4"
               data-aos="fade-up"
@@ -83,7 +102,7 @@ function Register() {
               <div className="RegisterForm p-3">
                 <form onSubmit={handelForm}>
                   <div className="row">
-                    <div className="form-title text-end">
+                    <div className="form-title text-end my-4">
                       <h3>تسجيل جديد</h3>
                       <p>
                         دعنا نساعدك جميعًا حتى تتمكن من الوصول إلى حسابك الشخصي.
@@ -93,65 +112,91 @@ function Register() {
 
                   <div className="row mb-3">
                     <div className="col-xl-6 col-12 mb-3 mb-xl-0">
-                      <input
-                        type="text"
-                        className="form-control firstNameInput"
-                        placeholder="أدخل الاسم الأول"
-                        aria-label="First name"
-                        value={FirstName}
-                        onChange={(e) => setFirstName(e.target.value)}
-                        data-aos="fade-right"
-                      />
+                      <div className="input-icon">
+                        <i className="fa fa-user input-icon-class right-icon"></i>
+                        <input
+                          type="text"
+                          className="form-control firstNameInput"
+                          placeholder="أدخل الاسم الأول"
+                          aria-label="First name"
+                          value={FirstName}
+                          onChange={(e) => setFirstName(e.target.value)}
+                          data-aos="fade-right"
+                        />
+                      </div>
                     </div>
                     <div className="col-xl-6 col-12">
-                      <input
-                        type="text"
-                        className="form-control secondNameInput"
-                        placeholder="أدخل اسم العائلة"
-                        aria-label="Last name"
-                        value={SecondName}
-                        onChange={(e) => setSecondName(e.target.value)}
-                        data-aos="fade-left"
-                      />
+                      <div className="input-icon">
+                        <i className="fa fa-user input-icon-class right-icon"></i>
+                        <input
+                          type="text"
+                          className="form-control secondNameInput"
+                          placeholder="أدخل اسم العائلة"
+                          aria-label="Last name"
+                          value={SecondName}
+                          onChange={(e) => setSecondName(e.target.value)}
+                          data-aos="fade-left"
+                        />
+                      </div>
                     </div>
                   </div>
 
                   <div className="row mb-3">
                     <div className="col-12">
-                      <input
-                        type="email"
-                        className="form-control inputEmail"
-                        placeholder="أدخل بريدك الإلكتروني"
-                        value={Email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        data-aos="fade-up"
-                      />
+                      <div className="input-icon">
+                        <i className="fa fa-envelope input-icon-class right-icon"></i>
+                        <input
+                          type="email"
+                          className="form-control inputEmail"
+                          placeholder="أدخل بريدك الإلكتروني"
+                          value={Email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          data-aos="fade-up"
+                        />
+                      </div>
                     </div>
                   </div>
 
                   <div className="row mb-3">
                     <div className="col-12">
-                      <input
-                        type="number"
-                        className="form-control phoneNumber"
-                        placeholder="أدخل رقم الهاتف الخاص بك"
-                        value={PhoneNumber}
-                        onChange={(e) => setPhoneNumber(e.target.value)}
-                        data-aos="fade-up"
-                      />
+                      <div className="input-icon">
+                        <i className="fa fa-phone input-icon-class right-icon"></i>
+                        <input
+                          type="text"
+                          className="form-control phoneNumber"
+                          placeholder="أدخل رقم الهاتف الخاص بك"
+                          value={PhoneNumber}
+                          onChange={(e) => setPhoneNumber(e.target.value)}
+                          data-aos="fade-up"
+                        />
+                      </div>
                     </div>
                   </div>
 
                   <div className="row mb-3">
                     <div className="col-12">
-                      <input
-                        type="password"
-                        className="form-control inputPassword"
-                        placeholder="أدخل كلمة المرور الخاصة بك"
-                        value={Password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        data-aos="fade-up"
-                      />
+                      <div className="input-icon">
+                        <i className="fa fa-lock input-icon-class lock-icon" onClick={()=>{showPass()}}></i>
+                        {show ? (
+                          <input
+                            type="text"
+                            className="form-control inputPassword"
+                            placeholder="أدخل كلمة المرور الخاصة بك"
+                            value={Password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            data-aos="fade-up"
+                          />
+                        ) : (
+                          <input
+                            type="password"
+                            className="form-control inputPassword"
+                            placeholder="أدخل كلمة المرور الخاصة بك"
+                            value={Password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            data-aos="fade-up"
+                          />
+                        )}
+                      </div>
                     </div>
                   </div>
 
@@ -161,7 +206,6 @@ function Register() {
                         className="w-100 Register-button"
                         type="button"
                         onClick={HandelRegister}
-                        data-aos="fade-up"
                       >
                         تسجيل جديد
                       </button>

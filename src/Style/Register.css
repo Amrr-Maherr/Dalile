@@ -72,15 +72,45 @@ section .container .row .Register-button {
 .form-check-label span {
     color: rgba(237, 184, 44, 1);
 }
-.form-check-input {
-        width: 25px;
-        height: 25px;
-        border-radius: 8px;
-        -webkit-border-radius: 8px;
-        -moz-border-radius: 8px;
-        -ms-border-radius: 8px;
-        -o-border-radius: 8px;
-}
 .log {
     width: 545px;
+}
+.input-icon {
+    position: relative;
+}
+
+.input-icon {
+    position: relative;
+}
+
+.input-icon-class {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    /* حجم الأيقونة */
+    z-index: 1111;
+    color: gray;
+}
+
+.input-icon-class.lock-icon {
+    left: 10px;
+    /* أيقونة القفل في أقصى اليسار */
+    cursor: pointer;
+}
+
+.input-icon-class.right-icon {
+    right: 10px;
+    /* الأيقونات الأخرى على اليمين */
+}
+
+.form-control {
+    padding-left: 30px;
+    /* لضمان أن النص يبدأ بعد الأيقونة */
+    padding-right: 30px;
+    /* إذا كانت الأيقونة على اليمين */
+    height: 45px;
+    /* تحديد الارتفاع ليكون مناسبًا */
+    line-height: 45px;
+    /* لضبط ارتفاع النص بحيث يكون في الوسط */
 }
