@@ -11,8 +11,11 @@ import "aos/dist/aos.css";
 function Login() {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
+  const [show,setShow] = useState(false)
   const Navigate = useNavigate();
-
+  const showPass = () => {
+    setShow(!show)
+  }
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -30,45 +33,48 @@ function Login() {
       email: Email,
       password: Password,
     };
-
-    localStorage.setItem("user", JSON.stringify(UserInfo));
-    axios
-      .post("https://dalil.mlmcosmo.com/api/login", UserInfo)
-      .then((response) => {
-        if (response.data && response.data.token) {
-          const token = response.data.token;
-          localStorage.setItem("AuthToken", JSON.stringify(token));
-
-          // تعيين التوكن في رؤوس الطلبات المستقبلية
-          axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-
-          const successMessage = response.data?.message;
-          Swal.fire({
-            title: "نجاح!",
-            text: successMessage,
-            icon: "success",
-          });
-          setEmail("");
-          setPassword("");
-          setTimeout(() => {
-            Navigate("/");
-          }, 2000);
-        } else {
-          Swal.fire({
-            icon: "error",
-            title: "خطأ",
-            text: "لم يتم استلام التوكن",
-          });
-        }
-      })
-      .catch((error) => {
-        const errorMessage = error.response?.data?.message;
-        Swal.fire({
-          icon: "error",
-          title: "خطأ",
-          text: errorMessage,
-        });
-      });
+    if (!Email || !Password) {
+      Swal.fire({
+              icon: "error",
+              title: "عذرًا...",
+              text: "يرجى ملء جميع الحقول!",
+              background: "#F9F9F9",
+              confirmButtonColor: "red",
+              confirmButtonText: "حسنا",
+            });
+    } else {
+          localStorage.setItem("AuthToken", JSON.stringify(UserInfo));
+          axios
+            .post("https://dalil.mlmcosmo.com/api/login", UserInfo)
+            .then((response) => {
+              if (response.data && response.data.token) {
+                const token = response.data.token;
+                localStorage.setItem("AuthToken", JSON.stringify(token));
+                const successMessage = response.data.message;
+                Swal.fire({
+                            title: "تمت العملية بنجاح",
+                            text: successMessage,
+                            icon: "success",
+                            background: "#F9F9F9",
+                            confirmButtonColor: "#EDB82C",
+                            confirmButtonText: "تسجيل الدخول",
+                          });
+                setEmail("");
+                setPassword("");
+                setTimeout(() => {
+                  Navigate("/");
+                }, 2000);
+              }
+            })
+            .catch((error) => {
+              const errorMessage = error.response.data.message;
+              Swal.fire({
+                          icon: "error",
+                          title: "فشل التسجيل",
+                          text: errorMessage,
+                        });
+            });
+    }
   };
 
   return (
@@ -78,7 +84,7 @@ function Login() {
       </div>
       <section>
         <div className="container">
-          <div className="row mt-4 w-100 d-flex align-items-center justify-content-between">
+          <div className="row mt-4  d-flex align-items-center justify-content-between">
             <div className="col-xl-6 col-12" data-aos="fade-right">
               <div className="login-image">
                 <img src={loginImage} alt="" />
@@ -92,26 +98,64 @@ function Login() {
               <div className="login-form mb-5">
                 <form onSubmit={HandelForm}>
                   <div className="col mb-5" data-aos="fade-up">
-                    <input
-                      type="email"
-                      className="form-control email"
-                      id="emailInput"
-                      placeholder="أدخل بريدك الإلكتروني"
-                      onChange={(e) => {
-                        setEmail(e.target.value);
-                      }}
-                    />
+                    <div className="input-container">
+                      <input
+                        type="email"
+                        className="form-control email"
+                        id="emailInput"
+                        placeholder="أدخل بريدك الإلكتروني"
+                        onChange={(e) => {
+                          setEmail(e.target.value);
+                        }}
+                      />
+                      <i className="fa fa-envelope icon-email"></i>{" "}
+                    </div>
                   </div>
+
                   <div className="col mb-3" data-aos="fade-up">
-                    <input
-                      type="password"
-                      className="form-control password"
-                      id="passwordInput"
-                      placeholder="أدخل كلمة المرور الخاصة بك"
-                      onChange={(e) => {
-                        setPassword(e.target.value);
-                      }}
-                    />
+                    <div className="col mb-3" data-aos="fade-up">
+                      {show ? (
+                        <>
+                          <div className="input-container">
+                            <input
+                              type="text"
+                              className="form-control password"
+                              id="passwordInput"
+                              placeholder="أدخل كلمة المرور الخاصة بك"
+                              onChange={(e) => {
+                                setPassword(e.target.value);
+                              }}
+                            />
+                            <i
+                              className="fa fa-lock icon-password"
+                              onClick={() => {
+                                showPass();
+                              }}
+                            ></i>
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div className="input-container">
+                            <input
+                              type="password"
+                              className="form-control password"
+                              id="passwordInput"
+                              placeholder="أدخل كلمة المرور الخاصة بك"
+                              onChange={(e) => {
+                                setPassword(e.target.value);
+                              }}
+                            />
+                            <i
+                              className="fa fa-lock icon-password"
+                              onClick={() => {
+                                showPass();
+                              }}
+                            ></i>
+                          </div>
+                        </>
+                      )}
+                    </div>
                   </div>
                 </form>
                 <div className="col-xl-6 col-12 w-100 mb-5" data-aos="fade-up">

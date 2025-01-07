@@ -9,6 +9,7 @@ import CategoriesNavigator from "../Components/CategoriesNavigator";
 import BestRestaurants from "../Components/BestRestaurants";
 
 function Home() {
+  const token = JSON.parse(localStorage.getItem("AuthToken"))
   const [loading, setLoading] = useState(true);
   const [location, setLocation] = useState({
     latitude: 31.034244338510604,
@@ -17,7 +18,6 @@ function Home() {
   const [nearbyPlaces, setNearbyPlaces] = useState([]);
 
   useEffect(() => {
-    const token = "252|ojXK8TnYLRtnQX3WERkm3HPltn6RJBPq0IntDkXW54640e26";
     if (!token) {
       console.error("Token not found. Please login first.");
       return;

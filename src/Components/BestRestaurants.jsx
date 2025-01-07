@@ -5,7 +5,7 @@ import axios from "axios";
 import { useState } from "react";
 
 function BestRestaurants() {
-  const token = "252|ojXK8TnYLRtnQX3WERkm3HPltn6RJBPq0IntDkXW54640e26";
+  const token = JSON.parse(localStorage.getItem("AuthToken"));
     const [restaurants, setRestaurants] = useState([]);
     const [loading,setLoading] = useState(true)
   useEffect(() => {

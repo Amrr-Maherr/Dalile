@@ -71,3 +71,42 @@ section .row .login-form .login-button button {
 .log {
     width: 545px;
 }
+/* تخصيص تنسيق الأيقونات في حقول الإدخال */
+.input-container {
+    position: relative;
+}
+
+.input-container input {
+    padding-left: 30px;
+    /* إضفاء المسافة اللازمة للأيقونة */
+}
+
+
+.input-container .icon-password {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    /* تغيير إلى left لتموضع الأيقونة في أقصى اليسار */
+    transform: translateY(-50%);
+    color: #ccc;
+    font-size: 18px;
+    cursor: pointer;
+}
+.input-container .icon-email {
+    position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        color: #ccc;
+        font-size: 18px;
+}
+/* تخصيص زر تسجيل الدخول مع أيقونة */
+.login-button button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-button button i {
+    margin-right: 10px;
+}
