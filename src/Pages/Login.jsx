@@ -35,19 +35,31 @@ function Login() {
     axios
       .post("https://dalil.mlmcosmo.com/api/login", UserInfo)
       .then((response) => {
-        const token = response.data.token;
-        localStorage.setItem("AuthToken", JSON.stringify(token));
-        const successMessage = response.data?.message;
-        Swal.fire({
-          title: "نجاح!",
-          text: successMessage,
-          icon: "success",
-        });
-        setEmail("");
-        setPassword("");
-        setTimeout(() => {
-          Navigate("/");
-        }, 2000);
+        if (response.data && response.data.token) {
+          const token = response.data.token;
+          localStorage.setItem("AuthToken", JSON.stringify(token));
+
+          // تعيين التوكن في رؤوس الطلبات المستقبلية
+          axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
+          const successMessage = response.data?.message;
+          Swal.fire({
+            title: "نجاح!",
+            text: successMessage,
+            icon: "success",
+          });
+          setEmail("");
+          setPassword("");
+          setTimeout(() => {
+            Navigate("/");
+          }, 2000);
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "خطأ",
+            text: "لم يتم استلام التوكن",
+          });
+        }
       })
       .catch((error) => {
         const errorMessage = error.response?.data?.message;

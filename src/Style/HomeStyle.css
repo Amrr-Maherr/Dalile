@@ -51,4 +51,25 @@
 .Home-section .container .Hero-content .Hero-buttons .login-btn , .Home-section .container .Hero-content .Hero-buttons .logout-btn {
     background-color: rgba(237, 184, 44, 1);
 }
+/* Loader.css */
+.loader {
+    border: 8px solid #f3f3f3;
+    /* Light grey */
+    border-top: 8px solid rgba(237, 184, 44, 1);
+    /* Blue */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
 
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
