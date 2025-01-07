@@ -8,9 +8,11 @@ import axios from "axios";
 import CategoriesNavigator from "../Components/CategoriesNavigator";
 import BestRestaurants from "../Components/BestRestaurants";
 import Footer from "../Components/Footer";
+import AOS from "aos"; // Import AOS
+import "aos/dist/aos.css"; // Import AOS styles
 
 function Home() {
-  const token = JSON.parse(localStorage.getItem("AuthToken"))
+  const token = JSON.parse(localStorage.getItem("AuthToken"));
   const [loading, setLoading] = useState(true);
   const [location, setLocation] = useState({
     latitude: 31.034244338510604,
@@ -19,6 +21,9 @@ function Home() {
   const [nearbyPlaces, setNearbyPlaces] = useState([]);
 
   useEffect(() => {
+    // Initialize AOS with 'once: false' to repeat the animations on scroll
+    AOS.init({ duration: 1000, once: false });
+
     if (!token) {
       console.error("Token not found. Please login first.");
       return;
@@ -59,7 +64,7 @@ function Home() {
         setNearbyPlaces(response.data);
         setTimeout(() => {
           setLoading(false);
-        },5000)
+        }, 5000);
       })
       .catch((error) => {
         console.error(
@@ -67,12 +72,12 @@ function Home() {
           error.response ? error.response.data : error.message
         );
       });
-  }, []);
+  }, [token]);
 
   return (
     <>
       <NavBar />
-      <section className="Home-section">
+      <section className="Home-section" data-aos="fade-up">
         <div className="container">
           <div className="Hero-content text-center">
             <div className="Hero-title">
@@ -106,7 +111,7 @@ function Home() {
                 ) : (
                   <>
                     {nearbyPlaces.map((place, index) => (
-                      <div className="col-xl-4" key={index}>
+                      <div className="col-xl-4" key={index} data-aos="fade-up">
                         <NearbyPlacesCard place={place} />
                       </div>
                     ))}
@@ -117,17 +122,17 @@ function Home() {
           </div>
         </div>
       </section>
-      <section> 
-        <div className="container my-5">
-          <CategoriesNavigator/>
+      <section>
+        <div className="container my-5" data-aos="fade-up">
+          <CategoriesNavigator />
         </div>
       </section>
-      <section> 
-        <div className="container">
-          <BestRestaurants/>
+      <section>
+        <div className="container" data-aos="fade-up">
+          <BestRestaurants />
         </div>
       </section>
-      <Footer/>
+      <Footer />
     </>
   );
 }

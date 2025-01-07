@@ -181,7 +181,7 @@ function Login() {
                     </div>
                   </div>
                 </div>
-                <div className="col-xl-6 col-12 w-100 mb-3" data-aos="fade-up">
+                <div className="col-xl-6 col-12 w-100 mb-3">
                   <div className="login-button">
                     <button className="d-block w-100" onClick={HandelLogin}>
                       تسجيل الدخول
