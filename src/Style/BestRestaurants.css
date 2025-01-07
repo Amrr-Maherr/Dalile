@@ -1,0 +1,15 @@
+section .container .row .BestRestaurants-title h3 {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 10px;
+}
+section .container .row .BestRestaurants-hr  {
+    width: 241px;
+        height: 3px;
+        background-color: rgba(237, 184, 44, 1);
+        margin-bottom: 10px;
+}
+section .container .row .BestRestaurants-title p {
+            font-size: 16px;
+            font-weight: 400;
+}
