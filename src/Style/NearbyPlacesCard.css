@@ -6,6 +6,7 @@ section .container .row .card {
         -moz-border-radius: 20px;
         -ms-border-radius: 20px;
         border-radius: 20px;
+        box-shadow: 0px 0px 6px 0 black;
 }
 section .container .row .card .card-text h3 {
         font-size: 16px;

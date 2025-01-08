@@ -42,7 +42,7 @@ function NavBar() {
               <Link className="nav-a active text-dark link">استكشف</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-a active text-dark link">الرئيسية</Link>
+              <Link className="nav-a active text-dark link" to="/">الرئيسية</Link>
             </li>
           </ul>
         </div>
