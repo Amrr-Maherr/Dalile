@@ -9,6 +9,7 @@ import Login from './Pages/Login';
 import ForgetPassword from "./Pages/ForgetPassword";
 import VerificationCode from './Pages/VerificationCode';
 import ResetPassword from './Pages/ResetPassword';
+import SinglePlace from './Pages/SinglePlace';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/forget-password" element={<ForgetPassword />} />
           <Route path="/verification-code" element={<VerificationCode />} />
           <Route path="/reset-password" element={<ResetPassword/>} />
+          <Route path="Place-details" element={<SinglePlace/>} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -1,0 +1,91 @@
+/* الصورة الرئيسية */
+.single-place-section .container .row .place-main-image {
+    max-width: 523px;
+    max-height: 572px;
+    overflow: hidden;
+}
+
+.single-place-section .container .row .place-main-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+/* الصور الفرعية */
+.single-place-section .container .row .place-thumbnail {
+    max-width: 301px;
+    max-height: 267px;
+    overflow: hidden;
+}
+
+.single-place-section .container .row .place-thumbnail img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    margin: 0 auto;
+}
+
+/* عنوان المكان */
+.single-place-section .container .row .place-info .place-name {
+    font-size: 60px;
+    font-weight: 700;
+}
+
+/* أوقات العمل */
+.single-place-section .container .row .place-info .place-timing p {
+    font-size: 32px;
+    font-weight: 500;
+}
+
+/* التقييمات */
+.single-place-section .container .row .place-rating .rating-details p {
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.single-place-section .container .row .place-rating .rating-heart {
+    width: 73px;
+    height: 73px;
+    border-radius: 50%;
+    background-color: rgba(237, 184, 44, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* عنوان الخريطة */
+.single-place-section .container .row .map-title h3 {
+    font-size: 60px;
+    font-weight: 700;
+}
+
+/* الخريطة */
+.single-place-section .container .row .place-map {
+    width: 1241px;
+    height: 450px;
+    border-radius: 15px;
+    background-color: red;
+}
+
+/* عنوان التقييمات */
+.single-place-section .container .row .reviews-title h3 {
+    font-size: 60px;
+    font-weight: 700;
+}
+.single-place-section .container .row .reviews-list {
+        width: 1240px;
+        height: 276px;
+        background-color: red;
+        border-radius: 16px;
+        -webkit-border-radius: 16px;
+        -moz-border-radius: 16px;
+        -ms-border-radius: 16px;
+        -o-border-radius: 16px;
+}
+/* بطاقات التقييم */
+.single-place-section .container .row .reviews-list .rev-card {
+    width: 1240px;
+    height: 276px;
+    border-radius: 16px;
+    background-color: red;
+}
