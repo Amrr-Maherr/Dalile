@@ -10,12 +10,11 @@ function NavBar() {
     axios
       .get("https://dalil.mlmcosmo.com/api/profile",{headers:{Authorization:`Bearer ${token}`}})
       .then((response) => {
-        console.log(response.data);
-        setUserInfo(response.data);
+        setUserInfo(response.data.image);
       })
       .catch((error) => {
         console.log(error);
-      },[]);
+      },[token]);
   })
   return (
     <nav className="navbar navbar-expand-xl bg-white shadow">
@@ -65,7 +64,7 @@ function NavBar() {
           دليل المدينة <img src={LogoImage} alt="" />
         </Link>
         <div className="user-image">
-          <img src={UserInfo.image} alt="" />
+          <img src={UserInfo} alt="" />
         </div>
       </div>
     </nav>

@@ -37,12 +37,12 @@ function Home() {
         },
       })
       .then((response) => {
-        console.log("Location stored successfully:", response.data);
+        // console.log("Location stored successfully:", response.data);
       })
       .catch((error) => {
         console.error(
           "Error storing location:",
-          error.response ? error.response.data : error.message
+          // error.response ? error.response.data : error.message
         );
       });
 

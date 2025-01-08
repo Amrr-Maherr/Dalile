@@ -13,19 +13,21 @@ function Profile() {
   const token = JSON.parse(localStorage.getItem("AuthToken"));
 
   useEffect(() => {
-    axios
-      .get("https://dalil.mlmcosmo.com/api/profile", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        setUserData(response.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching profile:", error);
-        setLoading(false);
-      });
-  }, [userData]);
+      setInterval(() => {
+        axios
+          .get("https://dalil.mlmcosmo.com/api/profile", {
+            headers: { Authorization: `Bearer ${token}` },
+          })
+          .then((response) => {
+            setUserData(response.data);
+            setLoading(false);
+          })
+          .catch((error) => {
+            console.error("Error fetching profile:", error);
+            setLoading(false);
+          });
+    },5000)
+  }, [token]);
 
   return (
     <>
