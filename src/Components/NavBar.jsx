@@ -1,7 +1,22 @@
 import { Link } from "react-router-dom";
 import LogoImage from "../Assets/Logo.png"
 import "../Style/NavBarStyle.css"
+import { useEffect, useState } from "react";
+import axios from "axios";
 function NavBar() {
+  const [UserInfo, setUserInfo] = useState({})
+  const token = JSON.parse(localStorage.getItem("AuthToken"))
+  useEffect(() => {
+    axios
+      .get("https://dalil.mlmcosmo.com/api/profile",{headers:{Authorization:`Bearer ${token}`}})
+      .then((response) => {
+        console.log(response.data);
+        setUserInfo(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      },[]);
+  })
   return (
     <nav className="navbar navbar-expand-xl bg-white shadow">
       <div className="container">
@@ -49,7 +64,9 @@ function NavBar() {
         <Link className="navbar-brand active logo text-dark">
           دليل المدينة <img src={LogoImage} alt="" />
         </Link>
-        <div className="user-image"></div>
+        <div className="user-image">
+          <img src={UserInfo.image} alt="" />
+        </div>
       </div>
     </nav>
   );
