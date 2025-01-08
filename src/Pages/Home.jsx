@@ -111,7 +111,7 @@ function Home() {
                 ) : (
                   <>
                     {nearbyPlaces.map((place, index) => (
-                      <div className="col-xl-4" key={index} data-aos="fade-up">
+                      <div className="col-xl-4 col-12 my-4" key={index} data-aos="fade-up">
                         <NearbyPlacesCard place={place} />
                       </div>
                     ))}

@@ -47,10 +47,12 @@ function BestRestaurants() {
           ) : (
             <>
               {restaurants.map((restaurant) => (
-                <BestRestaurantsCard
-                  key={restaurant.id}
-                  restaurant={restaurant}
-                />
+                <div className="col-xl-4 col-12">
+                  <BestRestaurantsCard
+                    key={restaurant.id}
+                    restaurant={restaurant}
+                  />
+                </div>
               ))}
             </>
           )}

@@ -128,13 +128,13 @@ function SinglePlace() {
                     {/* تعديل هنا */}
                     <div className="place-timing">
                       <p className="open fs-5 fs-md-6">
-                        يفتح الساعه {place.open_at}
-                      </p>{" "}
-                      {/* تعديل هنا */}
+                        يفتح الساعه {place.open_at}{" "}
+                        <i className="fa fa-clock"></i> {/* أيقونة الساعة */}
+                      </p>
                       <p className="close fs-5 fs-md-6">
-                        يغلق الساعه {place.close_at}
-                      </p>{" "}
-                      {/* تعديل هنا */}
+                        يغلق الساعه {place.close_at}{" "}
+                        <i className="fa fa-clock"></i> {/* أيقونة الساعة */}
+                      </p>
                     </div>
                   </div>
                 </div>

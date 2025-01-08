@@ -3,8 +3,10 @@ import "../Style/NearbyPlacesCard.css";
 
 function NearbyPlacesCard({ place }) {
   return (
-    <div className="col-xl-4 col-12 my-4">
-      <Link to={`/home/Place-details/${place.id}`}>
+      <Link
+        to={`/home/Place-details/${place.id}`}
+        className="text-decoration-none"
+      >
         <div className="card mx-auto">
           <div className=" d-flex align-items-center justify-content-end">
             <div className="card-text text-end mt-4">
@@ -17,7 +19,6 @@ function NearbyPlacesCard({ place }) {
           </div>
         </div>
       </Link>
-    </div>
   );
 }
 
