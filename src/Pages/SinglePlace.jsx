@@ -83,7 +83,7 @@ function SinglePlace() {
             </div>
 
             {/* قسم التقييم والتفاصيل */}
-            <div className="container my-5">
+            <div className="container my-3">
               <div className="row">
                 <div className="col-xl-6">
                   <div className="place-rating">
@@ -146,7 +146,7 @@ function SinglePlace() {
             </div>
 
             {/* قسم الموقع والخريطة */}
-            <div className="container my-5">
+            <div className="container my-3">
               <div className="row">
                 <div className="col-12 text-end">
                   <div className="map-title my-5">
@@ -172,7 +172,7 @@ function SinglePlace() {
             </div>
               <div className="container">
                 <div className="row">
-                  <div className="col-12 text-end my-4">
+                  <div className="col-12 text-end my-3">
                     <h3>التقييمات</h3>
                   </div>
                   <div className="col-12">

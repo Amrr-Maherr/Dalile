@@ -52,7 +52,7 @@
     justify-content: center;
     cursor: pointer;
 }
-.single-place-section .container .row .place-rating .rating-heart:hover .fa-heart{
+.single-place-section .container .row .place-rating .rating-heart:active .fa-heart{
     transform: scale(2.2);
     -webkit-transform: scale(2.2);
     -moz-transform: scale(2.2);
