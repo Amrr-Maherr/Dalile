@@ -5,6 +5,7 @@ import "../Style/SinglePlace.css";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import ReviewCard from "../Components/ReviewCard";
 
 function SinglePlace() {
   const { id } = useParams();
@@ -165,6 +166,16 @@ function SinglePlace() {
                   </div>
                 </div>
               </div>
+            </div>
+              <div className="container">
+                <div className="row">
+                  <div className="col-12 text-end my-4">
+                    <h3>التقييمات</h3>
+                  </div>
+                  <div className="col-12">
+                    <ReviewCard/>
+                  </div>
+                </div>
             </div>
           </section>
         </>
