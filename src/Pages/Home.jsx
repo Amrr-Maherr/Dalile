@@ -14,10 +14,6 @@ import "aos/dist/aos.css"; // Import AOS styles
 function Home() {
   const token = JSON.parse(localStorage.getItem("AuthToken"));
   const [loading, setLoading] = useState(true);
-  const [location, setLocation] = useState({
-    latitude: 31.034244338510604,
-    longitude: 31.3576615360131,
-  });
   const [nearbyPlaces, setNearbyPlaces] = useState([]);
 
   useEffect(() => {
