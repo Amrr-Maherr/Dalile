@@ -5,7 +5,8 @@ import "../Style/SinglePlace.css";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import ReviewCard from "../Components/ReviewCard";
+import ReviewCard from "../Components/reviewCard"
+
 
 function SinglePlace() {
   const { id } = useParams();
