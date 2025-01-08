@@ -14,8 +14,7 @@
 /* الصور الفرعية */
 .single-place-section .container .row .place-thumbnail {
     max-width: 301px;
-    max-height: 267px;
-    overflow: hidden;
+    height: 267px;
 }
 
 .single-place-section .container .row .place-thumbnail img {
@@ -44,15 +43,31 @@
 }
 
 .single-place-section .container .row .place-rating .rating-heart {
-    width: 73px;
-    height: 73px;
+    width: 63px;
+    height: 63px;
     border-radius: 50%;
     background-color: rgba(237, 184, 44, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
-
+.single-place-section .container .row .place-rating .rating-heart:hover .fa-heart{
+    transform: scale(2.2);
+    -webkit-transform: scale(2.2);
+    -moz-transform: scale(2.2);
+    -ms-transform: scale(2.2);
+    -o-transform: scale(2.2);
+}
+.single-place-section .container .row .place-rating .rating-heart .fa-heart {
+    font-size: 25px;
+    color: red;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+}
 /* عنوان الخريطة */
 .single-place-section .container .row .map-title h3 {
     font-size: 60px;
@@ -61,10 +76,9 @@
 
 /* الخريطة */
 .single-place-section .container .row .place-map {
-    width: 1241px;
+    max-width: 1241px;
     height: 450px;
     border-radius: 15px;
-    background-color: red;
 }
 
 /* عنوان التقييمات */
@@ -72,20 +86,60 @@
     font-size: 60px;
     font-weight: 700;
 }
+
 .single-place-section .container .row .reviews-list {
-        width: 1240px;
-        height: 276px;
-        background-color: red;
-        border-radius: 16px;
-        -webkit-border-radius: 16px;
-        -moz-border-radius: 16px;
-        -ms-border-radius: 16px;
-        -o-border-radius: 16px;
-}
-/* بطاقات التقييم */
-.single-place-section .container .row .reviews-list .rev-card {
     width: 1240px;
     height: 276px;
     border-radius: 16px;
-    background-color: red;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    -ms-border-radius: 16px;
+    -o-border-radius: 16px;
 }
+.single-place-section .container .row .rating {
+        font-size: 32px;
+        font-weight: 600;
+        color: rgba(53, 53, 53, 1);
+}
+.single-place-section .container .row .reviews_count {
+        font-size: 32px;
+        font-weight: 600;
+        color: rgba(171, 171, 171, 1);
+}
+.single-place-section .container .row .open {
+    color: rgba(10, 111, 230, 1);
+}
+.lod {
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.loader {
+    border: 8px solid #f3f3f3;
+    /* Light grey */
+    border-top: 8px solid rgba(237, 184, 44, 1);
+    /* Blue */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* بطاقات التقييم */
+/* .single-place-section .container .row .reviews-list .rev-card {
+    height: 276px;
+    border-radius: 16px;
+    background-color: red;
+} */

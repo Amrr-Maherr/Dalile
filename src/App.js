@@ -21,8 +21,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/forget-password" element={<ForgetPassword />} />
           <Route path="/verification-code" element={<VerificationCode />} />
-          <Route path="/reset-password" element={<ResetPassword/>} />
-          <Route path="Place-details" element={<SinglePlace/>} />
+          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="home/Place-details/:id" element={<SinglePlace />} />
         </Routes>
       </div>
     </BrowserRouter>
