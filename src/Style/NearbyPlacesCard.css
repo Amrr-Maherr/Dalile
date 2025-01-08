@@ -9,7 +9,7 @@ section .container .row .card {
         box-shadow: 0px 0px 6px 0 black;
 }
 section .container .row .card .card-text h3 {
-        font-size: 16px;
+        font-size: 17px;
         font-weight: 700;
 }
 section .container .row .card .card-text p {
