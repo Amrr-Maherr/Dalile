@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "../Style/ProfileCard.css";
 import axios from "axios";
-import Swal from "sweetalert2"; // استيراد sweetalert2
+import Swal from "sweetalert2"; // Import sweetalert2
 
 function ProfileCard({ name, email, phone }) {
   const [show, setShow] = useState(false);
@@ -17,7 +17,7 @@ function ProfileCard({ name, email, phone }) {
     formData.append("email", userEmail);
     if (userImage) formData.append("image", userImage);
 
-    // التحقق من وجود جميع البيانات المطلوبة
+    // Check if all required fields are filled
     if (
       !formData.get("name") ||
       !formData.get("email") ||
@@ -45,7 +45,7 @@ function ProfileCard({ name, email, phone }) {
         });
       })
       .catch((error) => {
-        // عرض تنبيه فشل في حال حدوث خطأ
+        // Show error alert in case of failure
         Swal.fire({
           icon: "error",
           title: "فشل التحديث",
@@ -59,21 +59,21 @@ function ProfileCard({ name, email, phone }) {
   return (
     <>
       {show ? (
-        // حالة التعديل (نموذج لإدخال البيانات الجديدة)
+        // Edit mode (form for entering new data)
         <div className="profile-card p-4">
           <div className="row d-flex align-items-center justify-content-between">
-            <div className="col-xl-12 text-end">
+            <div className="col-12 text-end">
               <button
                 className="upDateButton"
                 onClick={() => {
                   setShow(!show);
-                  handleUpdateProfile(); // استدعاء دالة التحديث عند الحفظ
+                  handleUpdateProfile(); // Call update function on save
                 }}
               >
                 حفظ <i className="fa fa-save ms-3"></i>
               </button>
             </div>
-            <div className="col-xl-12">
+            <div className="col-12">
               <form>
                 <div className="form-group text-end my-3">
                   <label htmlFor="name">الاسم بالكامل</label>
@@ -120,10 +120,10 @@ function ProfileCard({ name, email, phone }) {
           </div>
         </div>
       ) : (
-        // حالة العرض (عرض البيانات)
+        // Display mode (show data)
         <div className="profile-card p-4">
           <div className="row d-flex align-items-center justify-content-between">
-            <div className="col-xl-6">
+            <div className="col-12 col-md-6 text-start">
               <button
                 className="upDateButton"
                 onClick={() => {
@@ -133,7 +133,7 @@ function ProfileCard({ name, email, phone }) {
                 تعديل <i className="fa fa-pencil ms-3"></i>
               </button>
             </div>
-            <div className="col-xl-6 text-end">
+            <div className="col-12 col-md-6 text-end">
               <h5>
                 الاسم بالكامل <i className="fa fa-user"></i>
               </h5>
