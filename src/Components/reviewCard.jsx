@@ -3,7 +3,7 @@ import logo from "../Assets/Logo.png";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
-import "../Style/ReviewCard.css";
+import "../Style/reviewCard.css";
 function ReviewCard() {
   const [showInput, setShowInput] = useState(false);
   const [rating, setRating] = useState("");
