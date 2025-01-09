@@ -38,7 +38,7 @@ function NavBar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="active text-dark">
+              <Link className="active text-dark" to="/favorites">
                 <i className="fa fa-heart"></i>
               </Link>
             </li>
@@ -53,10 +53,14 @@ function NavBar() {
               <Link className="nav-a active text-dark link">اتصل بنا</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-a active text-dark link">استكشف</Link>
+              <Link className="nav-a active text-dark link" to="/all-places">
+                استكشف
+              </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-a active text-dark link" to="/">الرئيسية</Link>
+              <Link className="nav-a active text-dark link" to="/home">
+                الرئيسية
+              </Link>
             </li>
           </ul>
         </div>

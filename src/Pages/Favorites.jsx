@@ -72,7 +72,7 @@ function Favorites() {
                     className="text-decoration-none"
                     to={`/home/Place-details/${place.id}`}
                   >
-                    <div className="place-card shadow-sm rounded overflow-hidden">
+                    <div className="place-card mx-auto shadow-sm rounded overflow-hidden">
                       <img
                         src={place.cover_image}
                         alt={place.name}
