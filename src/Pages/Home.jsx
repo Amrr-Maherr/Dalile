@@ -19,12 +19,13 @@ function Home() {
   const Navigate = useNavigate();
   const [show,setShow] = useState(true)
   useEffect(() => {
-    // Initialize AOS with 'once: false' to repeat the animations on scroll
+    // Initialize AOS
     AOS.init({ duration: 1000, once: false });
 
     if (!token) {
       console.error("Token not found. Please login first.");
-      setShow(false)
+      setShow(false);
+      return;
     }
 
     const locationData = {
@@ -32,50 +33,48 @@ function Home() {
       latitude: 31.034244338510604,
     };
 
-    axios
-      .post("https://dalil.mlmcosmo.com/api/store-location", locationData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => {
-        // console.log("Location stored successfully:", response.data);
-      })
-      .catch((error) => {
-        console.error(
-          "Error storing location:",
-          // error.response ? error.response.data : error.message
+    const fetchLocationAndPlaces = async () => {
+      try {
+        // Store location
+        await axios.post(
+          "https://dalil.mlmcosmo.com/api/store-location",
+          locationData,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
-      });
+        console.log("Location stored successfully.");
 
-    axios
-      .get("https://dalil.mlmcosmo.com/api/nearby-places", {
-        params: {
-          latitude: locationData.latitude,
-          longitude: locationData.longitude,
-        },
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => {
+        // Fetch nearby places
+        const response = await axios.post(
+          "https://dalil.mlmcosmo.com/api/nearby-places",
+          locationData,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         setNearbyPlaces(response.data);
-        setTimeout(() => {
-          setLoading(false);
-        }, 5000);
-      })
-      .catch((error) => {
+        setLoading(false);
+      } catch (error) {
         console.error(
-          "Error fetching nearby places:",
+          "Error with API request:",
           error.response ? error.response.data : error.message
         );
-      });
+      }
+    };
+
+    fetchLocationAndPlaces();
   }, [token]);
+
   const HandelLogout = () => {
     axios
       .post(
         "https://dalil.mlmcosmo.com/api/logout",
-        {}, // Empty body as you are only sending headers
+        {},
         {
           headers: {
             Authorization: `Bearer ${token}`,
