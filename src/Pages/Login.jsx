@@ -62,7 +62,7 @@ function Login() {
             setEmail("");
             setPassword("");
             setTimeout(() => {
-              Navigate("/");
+              Navigate("/home");
             }, 2000);
           }
         })

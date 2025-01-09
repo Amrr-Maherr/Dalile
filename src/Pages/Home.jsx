@@ -87,7 +87,7 @@ function Home() {
           confirmButtonText: "حسنا",
         });
         localStorage.removeItem("AuthToken");
-        Navigate("/login");
+        Navigate("/");
       })
       .catch((error) => {
         console.error("Error logging out:", error);

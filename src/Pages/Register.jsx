@@ -67,7 +67,7 @@ function Register() {
           setPhoneNumber("");
           setPassword("");
           setTimeout(() => {
-            Navigate("/login");
+            Navigate("/");
           }, 2000);
         })
         .catch((error) => {
