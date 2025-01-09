@@ -12,6 +12,7 @@ import ResetPassword from './Pages/ResetPassword';
 import SinglePlace from './Pages/SinglePlace';
 import Profile from './Pages/Profile';
 import Favorites from './Pages/Favorites';
+import AllPlaces from './Pages/AllPlaces';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/favorites" element={<Favorites/>} />
+          <Route path="/all-places" element={<AllPlaces/>} />
           <Route path="home/Place-details/:id" element={<SinglePlace />} />
         </Routes>
       </div>
