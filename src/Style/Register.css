@@ -2,77 +2,90 @@ section {
     font-family: "cairo";
     background-color: rgba(249, 249, 249, 1);
 }
+
 section .container .row .Register-image {
     max-width: 633px;
     max-height: 633px;
 }
+
 section .container .row .Register-image img {
     width: 100%;
     height: 100%;
 }
+
 section .container .row .form-title h3 {
-        font-size: 40px;
-        font-weight: 700;
-        color: rgba(0, 0, 0, 1);
+    font-size: 40px;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 1);
 }
+
 section .container .row .form-title p {
-        font-size: 14px;
-        font-weight: 500;
-        color: rgba(161, 168, 176, 1);
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(161, 168, 176, 1);
 }
-section .container .row
-.RegisterForm input::placeholder {
+
+section .container .row .RegisterForm input::placeholder {
     text-align: right;
-        font-size: 16px;
-        font-weight: 400;
-        color: rgba(161, 168, 176, 1);
-        padding-right: 15px;
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(161, 168, 176, 1);
+    padding-right: 15px;
 }
+
 .RegisterForm form input {
     -o-border-radius: 15px;
-        -webkit-border-radius: 15px;
-        -moz-border-radius: 15px;
-        -ms-border-radius: 15px;
-        border-radius: 15px;
-        background-color: rgba(255, 255, 255, 1);
-        border: 1px solid rgba(229, 231, 235, 1);
-        text-align: right;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(229, 231, 235, 1);
+    text-align: right;
 }
-section .container .row .firstNameInput , .secondNameInput {
-        height: 59px;
+
+section .container .row .firstNameInput,
+.secondNameInput {
+    height: 59px;
 }
-section .container .row .RegisterForm .inputEmail , section .container .row .RegisterForm .phoneNumber, section .container .row .RegisterForm .inputPassword {
-        max-width: 545px;
-        height: 59px;
-        border-radius: 15px;
-        -webkit-border-radius: 15px;
-        -moz-border-radius: 15px;
-        -ms-border-radius: 15px;
-        -o-border-radius: 15px;
+
+section .container .row .RegisterForm .inputEmail,
+section .container .row .RegisterForm .phoneNumber,
+section .container .row .RegisterForm .inputPassword {
+    max-width: 545px;
+    height: 59px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
 }
+
 section .container .row .Register-button {
-        max-width: 546.3px;
-        height: 49px;
-        border-radius: 15px;
-        -webkit-border-radius: 15px;
-        -moz-border-radius: 15px;
-        -ms-border-radius: 15px;
-        -o-border-radius: 15px;
-        border: none;
-        background-color: rgba(237, 184, 44, 1);
-            font-size: 16px;
-            font-weight: 700;
-            color: rgba(255, 255, 255, 1);
+    max-width: 546.3px;
+    height: 49px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    border: none;
+    background-color: rgba(237, 184, 44, 1);
+    font-size: 16px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 1);
 }
+
 .form-check-label label {
-        font-size: 16px;
-        font-weight: 400;
-        color: rgba(0, 0, 0, 1);
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 1);
 }
+
 .form-check-label span {
     color: rgba(237, 184, 44, 1);
 }
+
 .log {
     width: 545px;
 }
-
