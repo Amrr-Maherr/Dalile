@@ -26,8 +26,8 @@ section .container .row .VerificationCode-title p {
         color: rgba(161, 168, 176, 1);
 }
 section .container .row .VerificationCode-form form input {
-    width: 85px;
-    height: 90px;
+    max-width: 85px;
+    max-height: 90px;
     border-radius: 16px;
     text-align: center;
     font-size: 32px;

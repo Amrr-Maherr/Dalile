@@ -110,11 +110,13 @@ function VerificationCode() {
                 </Link>
               </div>
               <div className="VerificationCode-title mb-4" data-aos="fade-up">
-                <h3>ادخل رمز التحقق</h3>
-                <p>دخل الرمز الذي أرسلناه إلى رقمك 7698234***</p>
+                <h3 className="fs-1 fs-md-3 fs-sm-5">ادخل رمز التحقق</h3>
+                <p className="fs-4 fs-md-3 fs-sm-5">
+                  دخل الرمز الذي أرسلناه إلى رقمك 7698234***
+                </p>
               </div>
               <div className="VerificationCode-form mb-5 " data-aos="fade-up">
-                <form className="d-flex align-items-center  flex-wrap gap-1 justify-content-end">
+                <form className="d-flex align-items-center gap-2 justify-content-center">
                   <input
                     type="text"
                     min={0}
@@ -158,7 +160,7 @@ function VerificationCode() {
                 </button>
               </div>
               <div className="VerificationCode-resend-link text-center">
-                <p>
+                <p className="fs-4 fs-md-3 fs-sm-5">
                   لم تتلق الرمز؟{" "}
                   <Link onClick={handleResendCode}>إعادة الإرسال</Link>
                 </p>
