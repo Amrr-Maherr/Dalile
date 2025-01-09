@@ -90,7 +90,7 @@ function ForgetPassword() {
                   </Link>
                 </div>
                 <div className="form-title mt-4" data-aos="fade-up">
-                  <h3>هل نسيت كلمه السر؟</h3>
+                  <h3 className="fs-1 fs-md-3 fs-sm-5">هل نسيت كلمه السر؟</h3>
                   <p>
                     أدخل بريدك الإلكتروني أو رقم هاتفك، وسنرسل لك رمز التأكيد
                   </p>
