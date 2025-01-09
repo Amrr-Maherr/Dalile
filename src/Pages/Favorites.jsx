@@ -55,7 +55,7 @@ function Favorites() {
       <NavBar />
       <section className="favorites-section py-5" dir="rtl">
         <div className="container">
-          <h2 className="section-title text-center mb-5">أماكنك المفضلة</h2>
+          <h2 className="section-title text-center mb-5 fs-1 fs-md-3 fs-sm-5">أماكنك المفضلة</h2>
           <div className="row">
             {isLoading ? (
               <div className="col-12 text-center">
