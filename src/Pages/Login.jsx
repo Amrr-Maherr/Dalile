@@ -11,11 +11,11 @@ import "aos/dist/aos.css";
 function Login() {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
-  const [show,setShow] = useState(false)
+  const [show, setShow] = useState(false);
   const Navigate = useNavigate();
   const showPass = () => {
-    setShow(!show)
-  }
+    setShow(!show);
+  };
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -35,45 +35,45 @@ function Login() {
     };
     if (!Email || !Password) {
       Swal.fire({
-              icon: "error",
-              title: "عذرًا...",
-              text: "يرجى ملء جميع الحقول!",
-              background: "#F9F9F9",
-              confirmButtonColor: "red",
-              confirmButtonText: "حسنا",
-            });
+        icon: "error",
+        title: "عذرًا...",
+        text: "يرجى ملء جميع الحقول!",
+        background: "#F9F9F9",
+        confirmButtonColor: "red",
+        confirmButtonText: "حسنا",
+      });
     } else {
-          localStorage.setItem("AuthToken", JSON.stringify(UserInfo));
-          axios
-            .post("https://dalil.mlmcosmo.com/api/login", UserInfo)
-            .then((response) => {
-              if (response.data && response.data.token) {
-                const token = response.data.token;
-                localStorage.setItem("AuthToken", JSON.stringify(token));
-                const successMessage = response.data.message;
-                Swal.fire({
-                            title: "تمت العملية بنجاح",
-                            text: successMessage,
-                            icon: "success",
-                            background: "#F9F9F9",
-                            confirmButtonColor: "#EDB82C",
-                            confirmButtonText: "تسجيل الدخول",
-                          });
-                setEmail("");
-                setPassword("");
-                setTimeout(() => {
-                  Navigate("/");
-                }, 2000);
-              }
-            })
-            .catch((error) => {
-              const errorMessage = error.response.data.message;
-              Swal.fire({
-                          icon: "error",
-                          title: "فشل التسجيل",
-                          text: errorMessage,
-                        });
+      localStorage.setItem("AuthToken", JSON.stringify(UserInfo));
+      axios
+        .post("https://dalil.mlmcosmo.com/api/login", UserInfo)
+        .then((response) => {
+          if (response.data && response.data.token) {
+            const token = response.data.token;
+            localStorage.setItem("AuthToken", JSON.stringify(token));
+            const successMessage = response.data.message;
+            Swal.fire({
+              title: "تمت العملية بنجاح",
+              text: successMessage,
+              icon: "success",
+              background: "#F9F9F9",
+              confirmButtonColor: "#EDB82C",
+              confirmButtonText: "تسجيل الدخول",
             });
+            setEmail("");
+            setPassword("");
+            setTimeout(() => {
+              Navigate("/");
+            }, 2000);
+          }
+        })
+        .catch((error) => {
+          const errorMessage = error.response.data.message;
+          Swal.fire({
+            icon: "error",
+            title: "فشل التسجيل",
+            text: errorMessage,
+          });
+        });
     }
   };
 
@@ -92,7 +92,7 @@ function Login() {
             </div>
             <div className="col-xl-6 col-12 mb-5 log " data-aos="fade-left">
               <div className="login-title text-end">
-                <h3 className="fs-1 fs-sm-4 fs-md-5">تسجيل دخول</h3>
+                <h3 className="fs-2 fs-sm-4 fs-md-5">تسجيل دخول</h3>
                 <p>تسجيل الدخول للوصول إلى حسابك</p>
               </div>
               <div className="login-form mb-5">
@@ -108,53 +108,53 @@ function Login() {
                           setEmail(e.target.value);
                         }}
                       />
-                      <i className="fa fa-envelope icon-email"></i>{" "}
+                      <i className="fa fa-envelope icon"></i>
                     </div>
                   </div>
 
-                    <div className="col mb-2" data-aos="fade-up">
-                      {show ? (
-                        <>
-                          <div className="input-container">
-                            <input
-                              type="text"
-                              className="form-control password"
-                              id="passwordInput"
-                              placeholder="أدخل كلمة المرور الخاصة بك"
-                              onChange={(e) => {
-                                setPassword(e.target.value);
-                              }}
-                            />
-                            <i
-                              className="fa fa-lock icon-password"
-                              onClick={() => {
-                                showPass();
-                              }}
-                            ></i>
-                          </div>
-                        </>
-                      ) : (
-                        <>
-                          <div className="input-container">
-                            <input
-                              type="password"
-                              className="form-control password"
-                              id="passwordInput"
-                              placeholder="أدخل كلمة المرور الخاصة بك"
-                              onChange={(e) => {
-                                setPassword(e.target.value);
-                              }}
-                            />
-                            <i
-                              className="fa fa-lock icon-password"
-                              onClick={() => {
-                                showPass();
-                              }}
-                            ></i>
-                          </div>
-                        </>
-                      )}
-                    </div>
+                  <div className="col mb-2" data-aos="fade-up">
+                    {show ? (
+                      <>
+                        <div className="input-container">
+                          <input
+                            type="text"
+                            className="form-control password"
+                            id="passwordInput"
+                            placeholder="أدخل كلمة المرور الخاصة بك"
+                            onChange={(e) => {
+                              setPassword(e.target.value);
+                            }}
+                          />
+                          <i
+                            className="fa fa-lock icon"
+                            onClick={() => {
+                              showPass();
+                            }}
+                          ></i>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="input-container">
+                          <input
+                            type="password"
+                            className="form-control password"
+                            id="passwordInput"
+                            placeholder="أدخل كلمة المرور الخاصة بك"
+                            onChange={(e) => {
+                              setPassword(e.target.value);
+                            }}
+                          />
+                          <i
+                            className="fa fa-lock icon"
+                            onClick={() => {
+                              showPass();
+                            }}
+                          ></i>
+                        </div>
+                      </>
+                    )}
+                  </div>
                 </form>
                 <div className="col-xl-6 col-12 w-100 my-4" data-aos="fade-up">
                   <div className="login-links d-flex align-items-center justify-content-between">
@@ -167,9 +167,9 @@ function Login() {
                       </Link>
                     </div>
                     <div className="d-flex justify-content-end">
-                      <div className="form-check">
+                      <div className="form-check d-flex justify-content-end gap-2">
                         <input
-                          className="form-check-input"
+                          className="form-check-input check"
                           type="checkbox"
                           value=""
                           id="flexCheckDefault"
