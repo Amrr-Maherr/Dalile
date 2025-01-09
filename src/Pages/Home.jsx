@@ -15,14 +15,14 @@ function Home() {
   const token = JSON.parse(localStorage.getItem("AuthToken"));
   const [loading, setLoading] = useState(true);
   const [nearbyPlaces, setNearbyPlaces] = useState([]);
-
+  const [show,setShow] = useState(true)
   useEffect(() => {
     // Initialize AOS with 'once: false' to repeat the animations on scroll
     AOS.init({ duration: 1000, once: false });
 
     if (!token) {
       console.error("Token not found. Please login first.");
-      return;
+      setShow(false)
     }
 
     const locationData = {
@@ -77,19 +77,26 @@ function Home() {
         <div className="container">
           <div className="Hero-content text-center">
             <div className="Hero-title">
-              <h1>
+              <h1 className="fs-1 fs-md-3 fs-sm-5">
                 استكشف العالم من حولك بسهولة <br />
                 وابتكار
               </h1>
             </div>
-            <div className="Hero-buttons">
-              <Link to="/register" className="register-btn btn">
-                تسجيل
-              </Link>
-              <Link to="login" className="login-btn btn">
-                تسجيل دخول
-              </Link>
-              <button className="logout-btn btn">تسجيل خروج</button>
+            <div className="Hero-buttons mt-5">
+              {show ? (
+                <>
+                  <button className="logout-btn btn">تسجيل خروج</button>
+                </>
+              ) : (
+                <>
+                  <Link to="/register">
+                    <button className="register-btn btn">تسجيل</button>
+                  </Link>
+                  <Link to="login">
+                    <button className="login-btn btn">تسجيل دخول</button>
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -103,11 +110,15 @@ function Home() {
             <div className="col-12">
               <div className="row">
                 {loading ? (
-                  <div className="loader"></div> // إظهار اللودر
+                  <div className="loader"></div>
                 ) : (
                   <>
                     {nearbyPlaces.map((place, index) => (
-                      <div className="col-xl-4 col-12 my-4" key={index} data-aos="fade-up">
+                      <div
+                        className="col-xl-4 col-12 my-4"
+                        key={index}
+                        data-aos="fade-up"
+                      >
                         <NearbyPlacesCard place={place} />
                       </div>
                     ))}
