@@ -64,7 +64,7 @@ function Profile() {
               <div className="row my-5">
                 <div className="col-12 text-end">
                   <div className="profile-title">
-                    <h3>الصفحه الشخصيه</h3>
+                    <h3 className="fs-2 fs-md-3 fs-sm-5">الصفحه الشخصيه</h3>
                   </div>
                 </div>
                 <div className="col-12 my-5">
