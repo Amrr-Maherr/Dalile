@@ -73,9 +73,15 @@ function Home() {
   }, [token]);
   const HandelLogout = () => {
     axios
-      .get("https://dalil.mlmcosmo.com/api/logout", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      .post(
+        "https://dalil.mlmcosmo.com/api/logout",
+        {}, // Empty body as you are only sending headers
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((response) => {
         const successMessage = response.data.message;
         Swal.fire({
@@ -92,7 +98,7 @@ function Home() {
       .catch((error) => {
         console.error("Error logging out:", error);
         const errorMessage =
-          error.response.data.message || "حدث خطأ أثناء تسجيل الخروج.";
+          error.response?.data?.message || "حدث خطأ أثناء تسجيل الخروج.";
         Swal.fire({
           title: "فشل تسجيل الخروج",
           text: errorMessage,
@@ -102,8 +108,8 @@ function Home() {
           confirmButtonText: "حسنا",
         });
       });
+  };
 
-  }
   return (
     <>
       <NavBar />
