@@ -49,7 +49,7 @@ function Footer() {
               {" "}
               {/* توسيط القائمة */}
               <li>
-                <Link to="/places" className="text-decoration-none text-dark">
+                <Link to="/all-places" className="text-decoration-none text-dark">
                   الاماكن
                 </Link>
               </li>

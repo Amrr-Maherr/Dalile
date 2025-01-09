@@ -120,7 +120,7 @@ function Register() {
                         onChange={(e) => setFirstName(e.target.value)}
                         data-aos="fade-right"
                       />
-                      <i className="fa fa-user icon"></i>
+                      
                     </div>
                     <div className="col-xl-6 col-12 input-container">
                       <input
@@ -132,7 +132,7 @@ function Register() {
                         onChange={(e) => setSecondName(e.target.value)}
                         data-aos="fade-left"
                       />
-                      <i className="fa fa-user icon"></i>
+                      
                     </div>
                   </div>
 
@@ -146,7 +146,7 @@ function Register() {
                         onChange={(e) => setEmail(e.target.value)}
                         data-aos="fade-up"
                       />
-                      <i className="fa fa-envelope icon"></i>
+                      
                     </div>
                   </div>
 
@@ -160,7 +160,7 @@ function Register() {
                         onChange={(e) => setPhoneNumber(e.target.value)}
                         data-aos="fade-up"
                       />
-                      <i className="fa fa-phone icon"></i>
+                      
                     </div>
                   </div>
 
@@ -189,7 +189,6 @@ function Register() {
                           />
                         </>
                       )}
-                      <i className="fa fa-lock icon" onClick={showPass}></i>
                     </div>
                   </div>
 

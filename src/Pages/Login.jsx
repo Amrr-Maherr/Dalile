@@ -82,26 +82,36 @@ function Login() {
       <div data-aos="fade-right">
         <SubNav />
       </div>
-      <section>
+      <section className="login-section">
         <div className="container">
           <div className="row mt-4  d-flex align-items-center justify-content-between">
-            <div className="col-xl-6 col-12" data-aos="fade-right">
+            <div
+              className="col-xl-6 col-12 login-image-container"
+              data-aos="fade-right"
+            >
               <div className="login-image">
                 <img src={loginImage} alt="" />
               </div>
             </div>
-            <div className="col-xl-6 col-12 mb-5 log " data-aos="fade-left">
+            <div
+              className="col-xl-6 col-12 mb-5 login-form-container"
+              data-aos="fade-left"
+            >
               <div className="login-title text-end">
-                <h3 className="fs-2 fs-sm-4 fs-md-5">تسجيل دخول</h3>
-                <p>تسجيل الدخول للوصول إلى حسابك</p>
+                <h3 className="login-title-text fs-2 fs-sm-4 fs-md-5">
+                  تسجيل دخول
+                </h3>
+                <p className="login-title-desc">
+                  تسجيل الدخول للوصول إلى حسابك
+                </p>
               </div>
               <div className="login-form mb-5">
                 <form onSubmit={HandelForm}>
-                  <div className="col mb-4" data-aos="fade-up">
+                  <div className="mb-4" data-aos="fade-up">
                     <div className="input-container">
                       <input
                         type="email"
-                        className="form-control email"
+                        className="form-control login-input-email"
                         id="emailInput"
                         placeholder="أدخل بريدك الإلكتروني"
                         onChange={(e) => {
@@ -112,56 +122,52 @@ function Login() {
                     </div>
                   </div>
 
-                  <div className="col mb-2" data-aos="fade-up">
+                  <div className="mb-2" data-aos="fade-up">
                     {show ? (
-                      <>
-                        <div className="input-container">
-                          <input
-                            type="text"
-                            className="form-control password"
-                            id="passwordInput"
-                            placeholder="أدخل كلمة المرور الخاصة بك"
-                            onChange={(e) => {
-                              setPassword(e.target.value);
-                            }}
-                          />
-                          <i
-                            className="fa fa-lock icon"
-                            onClick={() => {
-                              showPass();
-                            }}
-                          ></i>
-                        </div>
-                      </>
+                      <div className="input-container">
+                        <input
+                          type="text"
+                          className="form-control login-input-password"
+                          id="passwordInput"
+                          placeholder="أدخل كلمة المرور الخاصة بك"
+                          onChange={(e) => {
+                            setPassword(e.target.value);
+                          }}
+                        />
+                        <i
+                          className="fa fa-lock icon"
+                          onClick={() => {
+                            showPass();
+                          }}
+                        ></i>
+                      </div>
                     ) : (
-                      <>
-                        <div className="input-container">
-                          <input
-                            type="password"
-                            className="form-control password"
-                            id="passwordInput"
-                            placeholder="أدخل كلمة المرور الخاصة بك"
-                            onChange={(e) => {
-                              setPassword(e.target.value);
-                            }}
-                          />
-                          <i
-                            className="fa fa-lock icon"
-                            onClick={() => {
-                              showPass();
-                            }}
-                          ></i>
-                        </div>
-                      </>
+                      <div className="input-container">
+                        <input
+                          type="password"
+                          className="form-control login-input-password"
+                          id="passwordInput"
+                          placeholder="أدخل كلمة المرور الخاصة بك"
+                          onChange={(e) => {
+                            setPassword(e.target.value);
+                          }}
+                        />
+                        <i
+                          className="fa fa-lock icon"
+                          onClick={() => {
+                            showPass();
+                          }}
+                        ></i>
+                      </div>
                     )}
                   </div>
                 </form>
-                <div className="col-xl-6 col-12 w-100 my-4" data-aos="fade-up">
+                <div className="my-4" data-aos="fade-up">
                   <div className="login-links d-flex align-items-center justify-content-between">
                     <div className="">
                       <Link
                         to="/forget-password"
-                        className="fs-6 fs-sm-4 fs-md-5"
+                        className="login-forget-link fs-6 fs-sm-4 fs-md-5"
                       >
                         هل نسيت كلمه السر؟
                       </Link>
@@ -169,13 +175,13 @@ function Login() {
                     <div className="d-flex justify-content-end">
                       <div className="form-check d-flex justify-content-end gap-2">
                         <input
-                          className="form-check-input check"
+                          className="form-check-input login-check-input"
                           type="checkbox"
                           value=""
                           id="flexCheckDefault"
                         />
                         <label
-                          className="form-check-label fs-6 fs-sm-4 fs-md-5"
+                          className="form-check-label login-check-label fs-6 fs-sm-4 fs-md-5"
                           htmlFor="flexCheckDefault"
                         >
                           تذكرنى
@@ -184,17 +190,23 @@ function Login() {
                     </div>
                   </div>
                 </div>
-                <div className="col-xl-6 col-12 w-100 mb-3">
+                <div className="mb-3">
                   <div className="login-button">
-                    <button className="d-block w-100" onClick={HandelLogin}>
+                    <button
+                      className="d-block w-100 login-btn"
+                      onClick={HandelLogin}
+                    >
                       تسجيل الدخول
                     </button>
                   </div>
                 </div>
-                <div className="col-xl-6 col-12 w-100 mb-2">
+                <div className="mb-2">
                   <div className="login-register">
-                    <p className="fs-6 fs-sm-4 fs-md-5">
-                      ليس لديك حساب ?<Link to="/register">سجل الان</Link>
+                    <p className="login-register-text fs-6 fs-sm-4 fs-md-5">
+                      ليس لديك حساب ?
+                      <Link to="/register" className="login-register-link">
+                        سجل الان
+                      </Link>
                     </p>
                   </div>
                 </div>
