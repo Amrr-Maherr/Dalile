@@ -1,6 +1,6 @@
 import Footer from "../Components/Footer";
 import NavBar from "../Components/NavBar";
-import logo from "../Assets/Logo.png";
+import Swal from "sweetalert2";
 import "../Style/SinglePlace.css";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -14,6 +14,7 @@ function SinglePlace() {
   const [loading, setLoading] = useState(true);
   const [place, setPlace] = useState({});
   const [isFavorite, setIsFavorite] = useState(false);
+  const [isFavClicked, setIsFavClicked] = useState(false);
 
   useEffect(() => {
     axios
@@ -31,10 +32,20 @@ function SinglePlace() {
       .catch((error) => {
         console.log(error);
         setLoading(true);
+        const errorMessage = error.response?.data?.message || "حدث خطأ ما";
+        Swal.fire({
+          title: "فشل",
+          text: errorMessage,
+          icon: "error",
+          background: "#F9F9F9",
+          confirmButtonColor: "#EDB82C",
+          confirmButtonText: "حسنا",
+        });
       });
   }, [id, token]);
 
   const handleFav = () => {
+    setIsFavClicked(true);
     axios
       .post(
         `https://dalil.mlmcosmo.com/api/favorites/${id}/toggle`,
@@ -47,9 +58,24 @@ function SinglePlace() {
       )
       .then((response) => {
         setIsFavorite(!isFavorite);
+        const successMessage = response.data.message;
+        Swal.fire({
+          title: "تم بنجاح",
+          text: successMessage,
+          icon: "success",
+          background: "#F9F9F9",
+          confirmButtonColor: "#EDB82C",
+          confirmButtonText: "حسنا",
+        });
+        setTimeout(() => {
+          setIsFavClicked(false);
+        }, 1000);
       })
       .catch((error) => {
         console.log(error);
+        setTimeout(() => {
+          setIsFavClicked(false);
+        }, 1000);
       });
   };
 
@@ -60,13 +86,15 @@ function SinglePlace() {
       <>
         {Array(fullStars)
           .fill(
-            <span className="fa fa-star" style={{ color: "yellow" }}></span>
+            <span className="fa fa-star fs-2" style={{ color: "gold" }}></span>
           )
           .map((star, index) => (
             <span key={index}>{star}</span>
           ))}
         {Array(emptyStars)
-          .fill(<span className="fa fa-star" style={{ color: "#ccc" }}></span>)
+          .fill(
+            <span className="fa fa-star fs-2" style={{ color: "#ccc" }}></span>
+          )
           .map((star, index) => (
             <span key={index}>{star}</span>
           ))}
@@ -105,7 +133,10 @@ function SinglePlace() {
               </div>
               <div className="col-lg-6 col-12 d-flex flex-wrap">
                 {[1, 2, 3, 4].map((index) => (
-                  <div className="col-md-6 col-12 p-2" key={index}>
+                  <div
+                    className="col-md-6 col-12  d-flex align-items-center justify-content-center p-2"
+                    key={index}
+                  >
                     <div className="place-thumbnail">
                       {PlaceImages[index] && PlaceImages[index].image ? (
                         <img
@@ -120,13 +151,16 @@ function SinglePlace() {
               </div>
             </div>
           </div>
-
-          {/* قسم التقييم والتفاصيل */}
           <div className="container my-3">
-            <div className="row">
-              <div className="col-xl-6">
+            <div className="row ">
+              <div className="col-xl-6 col-12">
                 <div className="place-rating">
-                  <div className="rating-heart my-4" onClick={handleFav}>
+                  <div
+                    className={`rating-heart my-4 ${
+                      isFavClicked ? "fav-clicked" : ""
+                    }`}
+                    onClick={handleFav}
+                  >
                     <i
                       className={`fa fa-heart ${
                         isFavorite ? "text-danger" : ""
@@ -140,11 +174,11 @@ function SinglePlace() {
                     </div>
                     <p className="reviews_count fs-6">
                       {place.reviews_count} Reviews
-                    </p>{" "}
+                    </p>
                   </div>
                 </div>
               </div>
-              <div className="col-xl-6 text-end">
+              <div className="col-xl-6 col-12  text-end">
                 <div className="place-info">
                   <h3 className="place-name fs-2 fs-md-3 my-4">{place.name}</h3>
                   <div className="place-timing">
@@ -161,8 +195,6 @@ function SinglePlace() {
               </div>
             </div>
           </div>
-
-          {/* قسم الموقع والخريطة */}
           <div className="container my-3">
             <div className="row">
               <div className="col-12 text-end">

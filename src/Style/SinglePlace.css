@@ -137,9 +137,9 @@
     }
 }
 
-/* بطاقات التقييم */
-/* .single-place-section .container .row .reviews-list .rev-card {
-    height: 276px;
-    border-radius: 16px;
-    background-color: red;
-} */
+ .fav-clicked {
+     transform: scale(1.2);
+     /* تكبير الأيقونة قليلاً */
+     transition: transform 0.3s ease;
+     /* إضافة تأثير الانتقال السلس */
+ }
