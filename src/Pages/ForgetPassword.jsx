@@ -84,7 +84,7 @@ function ForgetPassword() {
             >
               <div className="forgetPassword-form text-end w-100">
                 <div className="form-link">
-                  <Link to="/login">
+                  <Link to="/">
                     الرجوع لتسجيل الدخول{" "}
                     <i className="fa fa-chevron-right mx-2"></i>
                   </Link>

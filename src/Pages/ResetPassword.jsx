@@ -46,7 +46,7 @@ function ResetPassword() {
         .post("https://dalil.mlmcosmo.com/api/update-password", formData)
         .then((response) => {
           Swal.fire("تم بنجاح", "تم تحديث كلمة المرور بنجاح", "success");
-          Navigate("/login");
+          Navigate("/");
         })
         .catch((error) => {
           Swal.fire(

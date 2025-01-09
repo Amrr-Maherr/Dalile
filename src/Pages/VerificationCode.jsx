@@ -104,7 +104,7 @@ function VerificationCode() {
             </div>
             <div className="col-xl-6 col-12 text-end log" data-aos="fade-left">
               <div className="VerificationCode-link mb-4 mt-5">
-                <Link to="/login">
+                <Link to="/">
                   الرجوع لتسجيل الدخول
                   <i className="fa fa-chevron-right mx-2"></i>
                 </Link>
