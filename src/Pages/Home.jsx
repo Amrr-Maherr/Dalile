@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import NavBar from "../Components/NavBar";
 import "../Style/HomeStyle.css";
@@ -8,6 +8,7 @@ import axios from "axios";
 import CategoriesNavigator from "../Components/CategoriesNavigator";
 import BestRestaurants from "../Components/BestRestaurants";
 import Footer from "../Components/Footer";
+import Swal from "sweetalert2"; // استيراد SweetAlert
 import AOS from "aos"; // Import AOS
 import "aos/dist/aos.css"; // Import AOS styles
 
@@ -15,6 +16,7 @@ function Home() {
   const token = JSON.parse(localStorage.getItem("AuthToken"));
   const [loading, setLoading] = useState(true);
   const [nearbyPlaces, setNearbyPlaces] = useState([]);
+  const Navigate = useNavigate();
   const [show,setShow] = useState(true)
   useEffect(() => {
     // Initialize AOS with 'once: false' to repeat the animations on scroll
@@ -69,7 +71,39 @@ function Home() {
         );
       });
   }, [token]);
+  const HandelLogout = () => {
+    axios
+      .get("https://dalil.mlmcosmo.com/api/logout", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        const successMessage = response.data.message;
+        Swal.fire({
+          title: "تم تسجيل الخروج بنجاح",
+          text: successMessage,
+          icon: "success",
+          background: "#F9F9F9",
+          confirmButtonColor: "#EDB82C",
+          confirmButtonText: "حسنا",
+        });
+        localStorage.removeItem("AuthToken");
+        Navigate("/login");
+      })
+      .catch((error) => {
+        console.error("Error logging out:", error);
+        const errorMessage =
+          error.response.data.message || "حدث خطأ أثناء تسجيل الخروج.";
+        Swal.fire({
+          title: "فشل تسجيل الخروج",
+          text: errorMessage,
+          icon: "error",
+          background: "#F9F9F9",
+          confirmButtonColor: "#EDB82C",
+          confirmButtonText: "حسنا",
+        });
+      });
 
+  }
   return (
     <>
       <NavBar />
@@ -85,7 +119,7 @@ function Home() {
             <div className="Hero-buttons mt-5">
               {show ? (
                 <>
-                  <button className="logout-btn btn">تسجيل خروج</button>
+                  <button className="logout-btn btn" onClick={()=>{HandelLogout()}}>تسجيل خروج</button>
                 </>
               ) : (
                 <>
