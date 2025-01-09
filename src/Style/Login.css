@@ -33,8 +33,14 @@
     padding-left: 45px;
 }
 
-.login-section .login-form-container .login-form input {
+.login-section .login-form-container .login-form input[type="email"] , .login-section .login-form-container .login-form input[type="password"] {
     text-align: right;
+    padding-right: 35px;
+}
+.form-check-input {
+    width: 20px;
+    height: 20px;
+    padding: 0px;
 }
 
 .login-section .login-form-container .login-form .login-input-email,
