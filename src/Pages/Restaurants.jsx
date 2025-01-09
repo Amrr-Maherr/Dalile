@@ -40,9 +40,8 @@ function Restaurants() {
             {restaurants.map((restaurant) => (
               <div key={restaurant.id} className="col-xl-4 col-lg-6 col-md-6">
                 <Link
-                  to={`/home/Restaurant-details/${restaurant.id}`}
-                  className="text-decoration-none"
-                >
+                  to={`/home/Place-details/${restaurant.id}`}
+                  className="text-decoration-none">
                   <div className="place-card mx-auto">
                     <img
                       src={restaurant.cover_image}

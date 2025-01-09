@@ -30,9 +30,9 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/all-cafes" element={<Cafes />} />
-          <Route path="/all-restaurants" element={<Restaurants/>} />
+          <Route path="/all-restaurants" element={<Restaurants />} />
           <Route path="/all-places" element={<AllPlaces />} />
-          <Route path="home/Place-details/:id" element={<SinglePlace />} />
+          <Route path="/home/Place-details/:id" element={<SinglePlace />} />
         </Routes>
       </div>
     </BrowserRouter>

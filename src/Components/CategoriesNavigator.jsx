@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../Style/CategoriesNavigator.css"
 function CategoriesNavigator() {
     return (
@@ -14,7 +15,9 @@ function CategoriesNavigator() {
                   </p>
                 </div>
                 <div className="card-button">
-                  <button>عرض جميع الكافيهات</button>
+                  <Link to="/all-cafes">
+                    <button>عرض جميع الكافيهات</button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -30,7 +33,9 @@ function CategoriesNavigator() {
                   </p>
                 </div>
                 <div className="card-button">
-                  <button>عرض جميع المطاعم</button>
+                  <Link to="/all-restaurants">
+                    <button>عرض جميع المطاعم</button>
+                  </Link>
                 </div>
               </div>
             </div>
