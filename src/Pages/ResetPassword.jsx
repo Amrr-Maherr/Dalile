@@ -63,7 +63,7 @@ function ResetPassword() {
       <div data-aos="fade-right">
         <SubNav />
       </div>
-      <section>
+      <section className="py-4">
         <div className="container">
           <div
             className="row d-flex align-items-center justify-content-center"
@@ -76,11 +76,15 @@ function ResetPassword() {
             </div>
             <div className="col-xl-6 col-12 text-end" data-aos="fade-left">
               <div className="resetPassword-link">
-                <Link to="/login">الرجوع لتسجيل الدخول</Link>
+                <Link to="/login" className="fs-4 fs-md-3 fs-sm-5">
+                  الرجوع لتسجيل الدخول
+                </Link>
               </div>
               <div className="resetPassword-title">
-                <h3>ادخل كلمه سر جديده</h3>
-                <p>دخل الرمز الذي أرسلناه إلى رقمك 7698234***</p>
+                <h3 className="fs-1 fs-md-4 fs-sm-5 my-2">ادخل كلمه سر جديده</h3>
+                <p className="fs-4 fs-md-3 fs-sm-5">
+                  دخل الرمز الذي أرسلناه إلى رقمك 7698234***
+                </p>
               </div>
               {show ? (
                 <>
