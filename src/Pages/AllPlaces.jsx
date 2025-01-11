@@ -31,9 +31,9 @@ function AllPlaces() {
     <>
       <NavBar />
       <div className="container mt-4">
-        <h2 className="AllPlaces-title fs-1 fs-md-3 fs-sm-5 text-end my-5">
+        <h5 className="AllPlaces-title fs-1 fs-md-3 fs-sm-5 text-end my-5">
           اكتشف الأماكن <i className="fa fa-map-marker me-3"></i>
-        </h2>
+        </h5>
 
         {loading ? (
           <section className="d-flex justify-content-center">

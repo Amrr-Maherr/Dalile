@@ -122,12 +122,8 @@
     transform: scale(1.05);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
-/* تعديل العنوان الخاص بالخريطة */
-.map-title {
-    font-size: 1.25rem;
-    /* تقليص الحجم */
-    font-weight: bold;
-    /* جعل الخط عريض */
-    margin-bottom: 10px;
-    /* إضافة مسافة بين العنوان والخريطة */
+.AllPlaces-title h5 i {
+    font-size: 1.5rem;
+    color: #ff6347;
+    margin-bottom: 20px;
 }

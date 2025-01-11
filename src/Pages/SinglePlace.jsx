@@ -13,6 +13,7 @@ function SinglePlace() {
   const [PlaceImages, setPlaceImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [place, setPlace] = useState({});
+  const [placeReviews, setPlaceReviews] = useState([]); // State to hold place reviews
   const [isFavorite, setIsFavorite] = useState(false);
   const [isFavClicked, setIsFavClicked] = useState(false);
 
@@ -26,7 +27,8 @@ function SinglePlace() {
       .then((response) => {
         setPlaceImages(response.data.images || []);
         setPlace(response.data);
-        setIsFavorite(response.data.is_favorite || false); // إضافة التحقق من المفضلة
+        setPlaceReviews(response.data.reviews || []); // Set reviews, ensure it's an array
+        setIsFavorite(response.data.is_favorite || false);
         setLoading(false);
       })
       .catch((error) => {
@@ -80,7 +82,10 @@ function SinglePlace() {
   };
 
   const renderStars = (rating) => {
-    const fullStars = Math.floor(rating);
+    const fullStars =
+      typeof rating === "number" && Number.isInteger(rating)
+        ? Math.floor(rating)
+        : 0;
     const emptyStars = 5 - fullStars;
     return (
       <>
@@ -112,42 +117,72 @@ function SinglePlace() {
       ) : (
         <section className="single-place-section py-4 my-2">
           <div className="container my-2">
-            {/* قسم الصور */}
+            {/* سلايدر الصور */}
             <div className="row">
-              <div className="col-lg-6 col-12 mb-4">
-                <div className="place-main-image">
-                  {PlaceImages.length > 0 && PlaceImages[0].image ? (
-                    <img
-                      src={PlaceImages[0].image}
-                      alt="Main Place"
-                      className="img-fluid rounded"
-                    />
-                  ) : (
-                    <img
-                      src="/path/to/default-image.jpg" // صورة افتراضية إذا كانت الصورة غير موجودة
-                      alt="Default Place"
-                      className="img-fluid rounded"
-                    />
+              <div className="col-12">
+                <div
+                  id="placeCarousel"
+                  className="carousel slide"
+                  data-bs-ride="carousel"
+                >
+                  <div className="carousel-inner">
+                    {PlaceImages.map((image, index) => (
+                      <div
+                        key={index}
+                        className={`carousel-item ${
+                          index === 0 ? "active" : ""
+                        }`}
+                      >
+                        <div className="carousel-image-wrapper">
+                          <img
+                            src={image.image}
+                            className="d-block w-100 rounded carousel-image"
+                            alt={`Place Image ${index}`}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                    {PlaceImages.length === 0 && (
+                      <div className="carousel-item active">
+                        <div className="carousel-image-wrapper">
+                          <img
+                            src="/path/to/default-image.jpg"
+                            className="d-block w-100 rounded carousel-image"
+                            alt="Default Place"
+                          />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  {PlaceImages.length > 1 && (
+                    <>
+                      <button
+                        className="carousel-control-prev"
+                        type="button"
+                        data-bs-target="#placeCarousel"
+                        data-bs-slide="prev"
+                      >
+                        <span
+                          className="carousel-control-prev-icon"
+                          aria-hidden="true"
+                        ></span>
+                        <span className="visually-hidden">Previous</span>
+                      </button>
+                      <button
+                        className="carousel-control-next"
+                        type="button"
+                        data-bs-target="#placeCarousel"
+                        data-bs-slide="next"
+                      >
+                        <span
+                          className="carousel-control-next-icon"
+                          aria-hidden="true"
+                        ></span>
+                        <span className="visually-hidden">Next</span>
+                      </button>
+                    </>
                   )}
                 </div>
-              </div>
-              <div className="col-lg-6 col-12 d-flex flex-wrap">
-                {[1, 2, 3, 4].map((index) => (
-                  <div
-                    className="col-md-6 col-12  d-flex align-items-center justify-content-center p-2"
-                    key={index}
-                  >
-                    <div className="place-thumbnail">
-                      {PlaceImages[index] && PlaceImages[index].image ? (
-                        <img
-                          src={PlaceImages[index].image}
-                          alt={`Thumbnail ${index}`}
-                          className="img-fluid rounded"
-                        />
-                      ) : null}
-                    </div>
-                  </div>
-                ))}
               </div>
             </div>
           </div>
@@ -158,14 +193,10 @@ function SinglePlace() {
                   <div
                     className={`rating-heart my-4 ${
                       isFavClicked ? "fav-clicked" : ""
-                    }`}
+                    } ${isFavorite ? "favorite" : ""}`}
                     onClick={handleFav}
                   >
-                    <i
-                      className={`fa fa-heart ${
-                        isFavorite ? "text-danger" : ""
-                      }`}
-                    ></i>
+                    <i className={`fa fa-heart`}></i>
                   </div>
                   <div className="rating-details text-center">
                     <div className="d-flex align-items-center justify-content-center gap-2">
@@ -181,14 +212,14 @@ function SinglePlace() {
               <div className="col-xl-6 col-12  text-end">
                 <div className="place-info">
                   <h3 className="place-name fs-2 fs-md-3 my-4">{place.name}</h3>
-                  <div className="place-timing">
+                  <div className="place-timing d-flex flex-column align-items-end">
                     <p className="open fs-5 fs-md-6">
-                      يفتح الساعه {place.open_at}{" "}
-                      <i className="fa fa-clock"></i>
+                      يفتح الساعه
+                      {place.open_at}
                     </p>
                     <p className="close fs-5 fs-md-6">
-                      يغلق الساعه {place.close_at}{" "}
-                      <i className="fa fa-clock"></i>
+                      يغلق الساعه
+                      {place.close_at}
                     </p>
                   </div>
                 </div>
@@ -222,6 +253,9 @@ function SinglePlace() {
             <div className="row">
               <div className="col-12 text-end my-3">
                 <h3>التقييمات</h3>
+              </div>
+              <div className="col-12">
+                
               </div>
               <div className="col-12">
                 <ReviewCard />
