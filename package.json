@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@fontsource/cairo": "^5.1.1",
+    "animate.css": "^4.1.1",
     "aos": "^2.3.4",
     "axios": "^1.7.9",
     "bootstrap": "^5.3.3",

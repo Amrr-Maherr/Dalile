@@ -8,16 +8,20 @@ import axios from "axios";
 import CategoriesNavigator from "../Components/CategoriesNavigator";
 import BestRestaurants from "../Components/BestRestaurants";
 import Footer from "../Components/Footer";
-import Swal from "sweetalert2"; // استيراد SweetAlert
-import AOS from "aos"; // Import AOS
-import "aos/dist/aos.css"; // Import AOS styles
+import Swal from "sweetalert2";   
+import AOS from "aos"; 
+import 'animate.css'; // استيراد animate.css
+import "aos/dist/aos.css";
+import restaurants from "../Assets/restaurant.jpg"
+import restaurant2 from "../Assets/restaurant2.jpg";
+import Cafe from "../Assets/Cafe.jpg";
 
 function Home() {
   const token = JSON.parse(localStorage.getItem("AuthToken"));
   const [loading, setLoading] = useState(true);
   const [nearbyPlaces, setNearbyPlaces] = useState([]);
   const Navigate = useNavigate();
-  const [show,setShow] = useState(true)
+  const [show, setShow] = useState(true);
   useEffect(() => {
     // Initialize AOS
     AOS.init({ duration: 1000, once: false });
@@ -68,7 +72,7 @@ function Home() {
     };
 
     fetchLocationAndPlaces();
-  }, [token]);
+  }, [token]); // This hook will run when the token changes
 
   const HandelLogout = () => {
     axios
@@ -113,30 +117,80 @@ function Home() {
     <>
       <NavBar />
       <section className="Home-section" data-aos="fade-up">
-        <div className="container">
-          <div className="Hero-content text-center">
-            <div className="Hero-title">
-              <h1 className="fs-1 fs-md-3 fs-sm-5">
-                استكشف العالم من حولك بسهولة <br />
-                وابتكار
-              </h1>
+        <div className="container-fluid p-0">
+          <div id="carouselExample" className="carousel slide">
+            <div className="carousel-inner">
+              {/* Slide 1 */}
+              <div className="carousel-item active">
+                <img src={restaurants} className="d-block w-100" alt="..." />
+                <div className="carousel-caption h-100 flex-column d-flex align-items-center justify-content-center">
+                  <h5 className="display-5 display-md-4 text-center animate__animated animate__fadeIn animate__delay-1s">
+                    استكشف أفضل الكافيهات
+                  </h5>
+                  <p className="lead lead-sm text-center animate__animated animate__fadeIn animate__delay-2s">
+                    اكتشف الأماكن القريبة منك في المنصورة.
+                  </p>
+                  <button className="btn btn-danger animate__animated animate__zoomIn animate__delay-3s">
+                    المزيد
+                  </button>
+                </div>
+              </div>
+              {/* Slide 2 */}
+              <div className="carousel-item">
+                <img src={restaurants} className="d-block w-100" alt="..." />
+                <div className="carousel-caption h-100 flex-column d-flex align-items-center justify-content-center">
+                  <h5 className="display-5 display-md-4 text-center animate__animated animate__fadeIn animate__delay-1s">
+                    قوائم مفضلة
+                  </h5>
+                  <p className="lead lead-sm text-center animate__animated animate__fadeIn animate__delay-2s">
+                    أضف الأماكن المفضلة لسهولة الوصول إليها.
+                  </p>
+                  <button className="btn btn-success animate__animated animate__zoomIn animate__delay-3s">
+                    ابدأ الآن
+                  </button>
+                </div>
+              </div>
+              {/* Slide 3 */}
+              <div className="carousel-item">
+                <img src={restaurant2} className="d-block w-100" alt="..." />
+                <div className="carousel-caption h-100 flex-column d-flex align-items-center justify-content-center">
+                  <h5 className="display-5 display-md-4 text-center animate__animated animate__fadeIn animate__delay-1s">
+                    أنشئ بروفايلك
+                  </h5>
+                  <p className="lead lead-sm text-center animate__animated animate__fadeIn animate__delay-2s">
+                    شارك تقييماتك للمطاعم في المنصورة.
+                  </p>
+                  <button className="btn btn-warning animate__animated animate__zoomIn animate__delay-3s">
+                    اعرف أكثر
+                  </button>
+                </div>
+              </div>
             </div>
-            <div className="Hero-buttons mt-5">
-              {show ? (
-                <>
-                  <button className="logout-btn btn" onClick={()=>{HandelLogout()}}>تسجيل خروج</button>
-                </>
-              ) : (
-                <>
-                  <Link to="/register">
-                    <button className="register-btn btn">تسجيل</button>
-                  </Link>
-                  <Link to="/">
-                    <button className="login-btn btn">تسجيل دخول</button>
-                  </Link>
-                </>
-              )}
-            </div>
+            {/* Controls */}
+            <button
+              className="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselExample"
+              data-bs-slide="prev"
+            >
+              <span
+                className="carousel-control-prev-icon text-dark"
+                aria-hidden="true"
+              ></span>
+              <span className="visually-hidden">Previous</span>
+            </button>
+            <button
+              className="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselExample"
+              data-bs-slide="next"
+            >
+              <span
+                className="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span className="visually-hidden">Next</span>
+            </button>
           </div>
         </div>
       </section>
