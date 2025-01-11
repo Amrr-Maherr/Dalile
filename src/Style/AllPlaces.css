@@ -1,86 +1,133 @@
 .place-card {
-    width: 100%;
-    margin: 20px;
-    border-radius: 15px;
-    overflow: hidden;
-    background-color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid #e1e1e1;
 }
 
 .place-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.place-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-bottom: 5px solid #f8f9fa;
-    transition: transform 0.3s ease;
-}
-
-.place-card:hover .place-image {
     transform: scale(1.05);
+    /* التكبير عند التمرير */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    /* ظلال أكبر عند التمرير */
 }
 
-.place-info {
+.card-body {
     padding: 20px;
-    color: #333;
+    opacity: 0;
+    animation: fadeIn 0.6s ease-in-out forwards;
 }
 
-.place-info h5 {
-    font-size: 1.5rem;
+.card-body.show {
+    opacity: 1;
+}
+
+.AllPlaces-title {
+    font-size: 1.25rem;
     font-weight: bold;
-    color: #007bff;
-    margin-bottom: 10px;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: slideIn 0.8s ease-out forwards;
+    animation-delay: 0.2s;
 }
 
-.place-info p {
+.card-text {
     font-size: 1rem;
-    color: #555;
-    margin-bottom: 10px;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: slideIn 0.8s ease-out forwards;
+    animation-delay: 0.4s;
 }
 
-.place-info strong {
-    color: #007bff;
-    font-weight: 600;
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
-.place-info .rating {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.place-info .rating .stars {
-    color: #ffcc00;
-    margin-right: 5px;
+@keyframes bounce {
+    0% {
+        transform: scale(1.1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1.1);
+    }
 }
 
-.place-info .status {
-    background-color: #d4edda;
-    color: #155724;
-    border-radius: 5px;
-    padding: 5px 10px;
-    font-size: 0.9rem;
-}
-
-.place-info .hours {
-    background-color: #e2e3e5;
-    color: #383d41;
-    border-radius: 5px;
-    padding: 5px 10px;
-    font-size: 0.9rem;
-    margin-top: 10px;
-}
-.page-title {
-    text-align: center;
+.AllPlaces-title i {
     font-size: 2rem;
-    color: #007bff;
-    margin-top: 30px;
-    margin-bottom: 40px;
-    font-weight: 600;
+    /* تغيير حجم الأيقونة */
+    color: #ff6347;
+    /* تغيير اللون */
+}
+
+/* تعديل الخريطة التفاعلية */
+.map-section {
+    background: #f4f4f4;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 30px;
+}
+
+.map-placeholder {
+    background-color: #e0e0e0;
+    height: 300px;
+    border-radius: 8px;
+}
+
+/* إضافة تأثيرات للكروت */
+.card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* إضافة قسم الأماكن المميزة */
+.highlighted-places h4 {
+    font-size: 1.5rem;
+    color: #ff6347;
+    margin-bottom: 20px;
+}
+
+.highlighted-places .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.highlighted-places .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+/* تعديل العنوان الخاص بالخريطة */
+.map-title {
+    font-size: 1.25rem;
+    /* تقليص الحجم */
+    font-weight: bold;
+    /* جعل الخط عريض */
+    margin-bottom: 10px;
+    /* إضافة مسافة بين العنوان والخريطة */
 }
