@@ -131,7 +131,7 @@ function Home() {
                   <Link to="/register">
                     <button className="register-btn btn">تسجيل</button>
                   </Link>
-                  <Link to="login">
+                  <Link to="/">
                     <button className="login-btn btn">تسجيل دخول</button>
                   </Link>
                 </>

@@ -25,7 +25,6 @@
 
 .navbar .container ul .nav-item .link:hover::before {
     width: 100%;
-    background-color: red;
 }
 .navbar .container .logo img {
     width: 16.01px;
@@ -44,4 +43,42 @@
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     border-radius: 50%;
+}
+.navbar .fa-heart {
+    color: rgb(215, 1, 1);
+}
+.navbar .fa-bell {
+    color: rgb(230, 195, 0);
+}
+.navbar .fa-search {
+    color: gray;
+}
+.navbar .fa {
+    font-size: 25px;
+    padding: 10px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+}
+.navbar .fa {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border-radius: 50%;
+    /* يجعل الخلفية دائرية */
+    padding: 8px;
+    /* مسافة داخلية للأيقونة */
+}
+
+.navbar .fa:hover {
+    background-color: rgba(128, 128, 128, 0.15);
+    transform: scale(1.2);
+    /* تكبير الأيقونة قليلاً */
+    cursor: pointer;
+    /* تغيير شكل المؤشر */
 }
