@@ -1,51 +1,47 @@
-footer {
-    background-color: rgba(212, 221, 183, 1);
-    width: 100%;
-    height: auto;
+.custom-footer {
+        background-color: rgba(212, 221, 183, 1);
+        /* اللون الأصلي للفوتر */
 }
 
-footer p.h5 {
-    margin-bottom: 25px;
-        font-size: 24px;
-        font-weight: 700;
-}
-footer ul li a{
-        font-size: 18px;
+footer h5 {
+        font-size: 20px;
         font-weight: 600;
-        text-decoration: none;
+        color: #333;
+        margin-bottom: 20px;
+}
+
+footer ul li {
+        margin-bottom: 10px;
+}
+footer ul li a {
         color: black;
 }
-footer .form-title h2 {
-        font-size: 64px;
-        font-weight: 400;
+
+footer .form-control {
+        border-radius: 25px;
+        padding: 10px;
 }
-footer button {
-        width: 163px;
-        height: 73px;
-        border-radius:12px;
-        -webkit-border-radius:12px;
-        -moz-border-radius:12px;
-        -ms-border-radius:12px;
-        -o-border-radius:12px;
-        background-color: rgba(208, 162, 38, 1);
+
+footer .btn-warning {
+        background-color: #d0a226;
         border: none;
-            font-size: 20px;
-            font-weight: 600;
+        border-radius: 25px;
+        color: white;
 }
-footer .email {
-    max-width: 315px;
-        height: 72px;
-        background-color: rgba(208, 162, 38, 0.2);
+
+footer .btn-warning:hover {
+        background-color: #b4891d;
 }
-footer .email::placeholder {
-        font-size: 20px;
-        font-weight: 600;
-        color: rgba(208, 162, 38, 1);
+
+footer .text-muted {
+        font-size: 14px;
+        color: #6c757d;
 }
-footer .email:focus {
-    background-color: rgba(208, 162, 38, 0.2);
+
+footer .text-dark {
+        color: #333;
 }
-label {
-        font-size: 20px;
-        font-weight: 400;
+
+footer a {
+        text-decoration: none;
 }
